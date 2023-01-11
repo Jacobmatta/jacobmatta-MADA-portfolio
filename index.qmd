@@ -9,8 +9,7 @@ output:
 
 ### And hello again
 
-Welcome to **my website** and _data analysis portfolio._ 
+Welcome to **Jacob Matta's website** and *data analysis portfolio.*
 
-
-* Please use the `Menu Bar` above to look around.
-* Have fun!
+-   Please use the `Menu Bar` above to look around.
+-   Have fun!

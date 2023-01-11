@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "aboutme.html",
+    "href": "aboutme.html",
+    "title": "About me",
+    "section": "",
+    "text": "Add some text and a figure describing myself."
+  },
+  {
+    "objectID": "visualization_exercise.html",
+    "href": "visualization_exercise.html",
+    "title": "Visualization Exercise",
+    "section": "",
+    "text": "Placeholder file for the future visualization exercise."
+  },
+  {
+    "objectID": "coding_exercise.html",
+    "href": "coding_exercise.html",
+    "title": "R Coding Exercise",
+    "section": "",
+    "text": "Placeholder file for the future R coding exercise."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My website and data analysis portfolio",
+    "section": "",
+    "text": "Hello\n\nAnd hello again\nWelcome to Jacob Matta’s website and data analysis portfolio.\n\nPlease use the Menu Bar above to look around.\nHave fun!"
+  },
+  {
+    "objectID": "aboutme.html#background",
+    "href": "aboutme.html#background",
+    "title": "About me",
+    "section": "Background",
+    "text": "Background\nI am Jacob Matta, a first-year Master of Public Health (MPH) student with a concentration in Biostatistics. I completed my undergraduate degree in Biochemistry and Molecular Biology from the University of Georgia (UGA) during the spring of 2021. I currently work as a Graduate Research Assistant (GRA) in the Economic Evaluation Research Group in the Health Policy and Management Department at UGA."
+  },
+  {
+    "objectID": "aboutme.html#research-interests",
+    "href": "aboutme.html#research-interests",
+    "title": "About me",
+    "section": "Research Interests",
+    "text": "Research Interests\nI am interested in engaging in patient-centered research and and using quantitative methods to develope clinical outcomes assessments."
+  },
+  {
+    "objectID": "aboutme.html#statistics-programming-and-data-analysis-experience",
+    "href": "aboutme.html#statistics-programming-and-data-analysis-experience",
+    "title": "About me",
+    "section": "Statistics, Programming and Data Analysis Experience",
+    "text": "Statistics, Programming and Data Analysis Experience\nLast semester I was introduced to Stata, SAS and R through coursework where I learned basic statistics testing and analysis. As a GRA, I used R Studio and Stata to conduct secondary data analyses of data released by Georgia Department of Public Health."
+  },
+  {
+    "objectID": "aboutme.html#goals-for-mada",
+    "href": "aboutme.html#goals-for-mada",
+    "title": "About me",
+    "section": "Goals for MADA",
+    "text": "Goals for MADA\nI am hoping this course helps me develop my skills and understanding of R Studio. Specifically, I would like to build efficient strategies to obtain and clean data, run an appropriate analysis, and then be able to communicate the findings to an audience. In addition, I am eager to learn about programming, machine learning, and other modern approaches to data analysis that are the future."
+  },
+  {
+    "objectID": "aboutme.html#fun-fact",
+    "href": "aboutme.html#fun-fact",
+    "title": "About me",
+    "section": "Fun Fact",
+    "text": "Fun Fact\nPrevious to starting the MPH program I was set on attending veterinary school and becoming a veterinarian that specializes in public health. After a semester, my career interest has become more focused to humans but remains in the field of public health."
+  },
+  {
+    "objectID": "aboutme.html#something-to-share",
+    "href": "aboutme.html#something-to-share",
+    "title": "About me",
+    "section": "Something to Share",
+    "text": "Something to Share\nhttps://open.spotify.com/episode/5LHMx6BmuaOpLyEOp49Rpy?si=3c45b75711614e6e\nI would like to share a link to an episode of The Peter Attia Drive Podcast, in which the host, Peter Attia, discusses neurodegenerative diseases with a neurologist. At the 1 hour and 24 minute mark of the episode, Peter and his guest discuss that early screenings for hearing loss are important because they believe that hearing loss contributes to nuerodegenerative diseases like Alzheimer’s Disease. If Peter Attia and his guest are correct, then accurate screening strategies are needed at earlier stages in patients’ lives in order to improve prevention of neurodegenerative diseases. This will require new and improved data analysis methods to interpret data correctly and efficiently."
+  }
+]
