@@ -6,3 +6,47 @@ output:
 ---
 
 Placeholder file for the future R coding exercise.
+
+#InstalL the dslabs package that I will use to look at and play with some data
+install.packages("dslabs")
+#Loading dslabs package 
+library("dslabs")
+#look at help file for gapminder data 
+help(gapminder) 
+#get an overview of data structure 
+str(gapminder) 
+#get a summary of data 
+summary(gapminder) 
+#determine the type of object gapminder is 
+class(gapminder)
+
+#Assigning gapminder dataframe to a new object called gapminder
+gapminder <- gapminder
+
+#loading tidyverse for data porcessing
+library("tidyverse")
+
+#Write code that assigns only the African countries to a new object/variable called africadata which should have 2907 observations 
+africadata <- dplyr::filter(gapminder, continent %in% c("Africa"))
+
+#running summary on africadata
+summary(africadata)
+
+#creating an object that contains only the infant mortality and life expectancy data
+#to do that I will remove every variable that is not infant mortality or life expectancy
+#the -c indicates columns being dropped
+#brackets [] are used to indicate the postion od items in the dataframe
+#left of the comma indicates the rows and right of the comma indicated columns
+infant_mortality_and_life_expectancy <- africadata[,-c(1:2,5:9)]
+
+#summary of infant_mortality_and_life_expectancy
+summary(infant_mortality_and_life_expectancy)
+str(infant_mortality_and_life_expectancy)
+
+#creating an object that contains only population and life expectancy data
+population_and_life_expectancy <- africadata[,-c(1:3,5,7:9)]
+
+#summary of population_and_life_expectancy
+summary(population_and_life_expectancy)
+str(population_and_life_expectancy)
+
