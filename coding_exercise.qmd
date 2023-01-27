@@ -174,3 +174,47 @@ data=population_and_life_expectancy_2000)
 summary(fit1)
 
 summary(fit2)
+
+
+## ## 
+### Deanna Lanier Additions
+```{r}
+library(tidyverse)
+library(dslabs)
+```
+
+```{r}
+# I think you forgot to add log for population
+data = gapminder
+africaData = data [ which(data$continent=="Africa"), ]
+# Plot life expectancy as a function of population
+ggplot(africaData, aes(x=log(population), y=life_expectancy, col=region)) + geom_point() +xlab("Population (log)")+ ylab("Life Expectancy (Years)")+
+  theme_bw()
+```
+
+
+```{r}
+#Plot Infant Mortality and Year colored by region 
+ggplot(africaData, aes(x=year, y=infant_mortality, col=region)) + geom_point() +xlab("year")+ ylab("infant_mortality")+
+  theme_bw()
+
+```
+```{r}
+# linear model year and fertility 
+lm1=lm(year~infant_mortality, data=africaData)
+table1=broom::tidy(lm1)%>%
+  knitr::kable(digits=3)
+
+table1
+```
+
+```{r}
+
+#plot population and fertility colored by region
+y2000 = africaData [ which(africaData$year=="2000"), ]
+ggplot(y2000, aes(x=log(population), y=fertility, col=region)) + geom_point() +xlab("Population (log)")+ ylab("Fertility")+
+  theme_bw()
+```
+No clear relationship between population and fertility observed 
+
+**End of Deanna Lanier additions**
