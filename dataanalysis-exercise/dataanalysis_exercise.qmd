@@ -1,0 +1,60 @@
+---
+title: "dataanalysis_exercise"
+editor: visual
+---
+
+### Description of data
+
+The data I chose for this exercise is data from the CDC that contains the funds the CDC received from the federal government in a form of five differnt congressional acts: the Coronavirus Preparedness and Response Supplemental Appropriations Act, 2020; Coronavirus Aid, Relief, and Economic Security Act; Paycheck Protection Program and Health Care Enhancement Act; Coronavirus Response and Relief Supplemental Appropriations Act, 2021; and American Rescue Plan Act of 2021.
+
+###Loadpackages 
+```{r}
+library(readr) #for loading csv files
+library(dplyr) #for data processing/cleaning
+library(tidyr) #for data processing/cleaning
+library(stats) #used for cleaning 
+library(here) #to set paths
+```
+
+###Loaddata
+#note the use of the here() package and not absolute paths
+#notice here::here is to indicate package::function()
+```{r}
+data_location <- here::here("dataanalysis-exercise", "data","raw data",
+                                          "CDC_COVID_State_Funding.csv")
+rawdata <- readr::read_csv(data_location)
+```
+
+###explore the data 
+```{r}
+dplyr::glimpse(rawdata)
+summary(rawdata)
+head(rawdata)
+skimr::skim(rawdata)
+```
+
+###cleandata1 
+#the only variable that appears to have a lot of missing values is Sub-jurisdiction.
+#I am going to extract the observations that have missing sub-jurisdictions. 
+```{r}
+df1 <- stats::na.omit(rawdata)
+```
+
+###cleandata2
+#there are some funding amounts that are $0.
+#I am only interested in funding that is over $0.
+#to clean this up I will remove all the rows containing $0.
+```{r}
+df2 <- df1 %>% dplyr::filter(Amount != 0)
+```
+
+###cleandata3
+#I am only interested in the supplemental act name.
+#the following code will remove the topical area column and the award name column.
+```{r}
+df3 <- dplyr::select(df2,-c("Topical Area", "Award Name"))
+```
+
+###Variables of interest 
+#Interest which Jurisdition has the most funding (amount).
+#Also curious which supplemental act has the most funding.
