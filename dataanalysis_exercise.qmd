@@ -1,11 +1,13 @@
 ---
-title: "dataanalysis_exercise"
-editor: visual
+title: "R Data Analysis Exercise"
+output: 
+  html_document:
+      toc: FALSE
 ---
 
 ### Description of data
 
-The data I chose for this exercise is data from the CDC that contains the funds the CDC received from the federal government in a form of five differnt congressional acts: the Coronavirus Preparedness and Response Supplemental Appropriations Act, 2020; Coronavirus Aid, Relief, and Economic Security Act; Paycheck Protection Program and Health Care Enhancement Act; Coronavirus Response and Relief Supplemental Appropriations Act, 2021; and American Rescue Plan Act of 2021.
+The data I chose for this exercise is data from the CDC that contains the funds the CDC received from the federal government in a form of five different congressional acts: the Corona virus Preparedness and Response Supplemental Appropriations Act, 2020; Corona virus Aid, Relief, and Economic Security Act; Paycheck Protection Program and Health Care Enhancement Act; Corona virus Response and Relief Supplemental Appropriations Act, 2021; and American Rescue Plan Act of 2021.
 
 ###Loadpackages
 
@@ -54,14 +56,14 @@ df3 <- dplyr::select(df2,-c("Topical Area", "Award Name"))
 
 ###Variables of interest #Interest which Jurisdition has the most funding (amount). #Also curious which supplemental act has the most funding.
 
------------------------------------------------Aidan Troha's Edit--------------------------------------------
-####Additional Packages
+-----------------------------------------------Aidan Troha's Edit-------------------------------------------- ####Additional Packages
+
 ```{r}
 library(ggplot2)
 ```
 
-##selectingdata1 
-First, we summarise the data based on location (Jurisdiction). Also, we wish to convert the "Amount" column to one that can be easily readable by viewers.We can achieve this by using the "group-by","summarise", and "mutate" functions.
+##selectingdata1 First, we summarise the data based on location (Jurisdiction). Also, we wish to convert the "Amount" column to one that can be easily readable by viewers.We can achieve this by using the "group-by","summarise", and "mutate" functions.
+
 ```{r}
 test1 <- df3 %>%
       group_by(Jurisdiction) %>%
@@ -69,8 +71,8 @@ test1 <- df3 %>%
       mutate(`Funding (in Millions)` = Funding/1000000)
 ```
 
-##plotting1
-We want to show the relationships between the state and the amount of funding received. Since there is such a disparity between the states with the most funding and the states with the least funding, I will only show the states with the highest level of funding.
+##plotting1 We want to show the relationships between the state and the amount of funding received. Since there is such a disparity between the states with the most funding and the states with the least funding, I will only show the states with the highest level of funding.
+
 ```{r}
 ggplot(mapping=aes(x=Jurisdiction,y=`Funding (in Millions)`)) +
        geom_col(data=slice_max(test1,order_by=`Funding (in Millions)`,n=5),
@@ -80,8 +82,8 @@ ggplot(mapping=aes(x=Jurisdiction,y=`Funding (in Millions)`)) +
        labs(title="States with the Highest Level of Funding")
 ```
 
-##selectingdata2
-As before, we summarise the data, but this time, we group by "Supplemental Act Name". 
+##selectingdata2 As before, we summarise the data, but this time, we group by "Supplemental Act Name".
+
 ```{r}
 test2 <- df3 %>%
   group_by(`Supplemental Act Name`) %>%
@@ -89,8 +91,8 @@ test2 <- df3 %>%
   mutate(`Funding (in Millions)` = Funding/1000000)
 ```
 
-##plotting2
-We want to show the relationships between the cumulative amount of funding donated by Supplemental Act.
+##plotting2 We want to show the relationships between the cumulative amount of funding donated by Supplemental Act.
+
 ```{r}
 ggplot(data=test2,mapping=aes(x=`Supplemental Act Name`,
                               y=`Funding (in Millions)`)) +
