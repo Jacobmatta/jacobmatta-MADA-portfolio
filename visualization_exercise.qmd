@@ -5,4 +5,41 @@ output:
     toc: FALSE
 ---
 
-Placeholder file for the future visualization exercise.
+Loading packages
+
+```{r}
+library(here) #to set paths
+library(readr) #for loading csv files
+library(ggplot2)
+```
+
+Loading the data
+
+```{r}
+data_location <- here::here("data","raptor_by_nba_player.csv")
+rawdata <- readr::read_csv(data_location)
+```
+
+Examining data
+
+```{r}
+head(rawdata)
+str(rawdata) #used to see how data is structured 
+```
+
+Only interested in player raptor stats in the 2022 season, so I will extract all the observations of the 2022 season
+
+```{r}
+#extracting only players in the 2022 season 
+rawdata_2022 <- rawdata[rawdata$season == '2022', ]
+
+```
+
+Examining extracted data
+
+```{r}
+head(rawdata_2022)
+str(rawdata_2022) #used to see how data is structured 
+```
+
+I am interested in plotting Offensive RAPTOR rating (independent variable) vs Defensive RAPTOR rating (dependent variable)
