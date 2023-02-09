@@ -5,12 +5,35 @@ output:
     toc: FALSE
 ---
 
+## Reproduction of a Professional Looking Graph
+
+My professional looking graph of choice is from [FiveThirtyEight.com](https://fivethirtyeight.com) is a scatter of NBA players' RAPTOR metric from the 2021-2022 season. For context, RAPTOR is an all emcompassing NBA player statistic designed by FiveThirtyEight that was designed to evaluate player performance. I chose to reproduce this plot because I am an NBA fan myself, that perfers to stay updated on the box scores rather than actually watching the games live.
+
+## Access the Professional Graph
+
+The scatter plot can be found at this [link](https://projects.fivethirtyeight.com/nba-player-ratings/). After clicking on the link, scroll down to the scatter plot titled "Where every player in the NBA stands, according to RAPTOR".
+
+## Adjusting the Professional Interactive Graph
+
+Since this professional scatter plot I will be recreating is interactive, I will adjust it to visualize players in the 2021-2022 NBA Season who played 1040 minutes or more. Follow the directions below to do so.
+
+1.  Scroll down to the scatter plot titled "Where every player in the NBA stands, according to RAPTOR" if you haven't already
+2.  Adjust the interactive graph by selecting the '21-22' and deselecting '22-23' in the options titles "CHOOSE SEASON(S)".
+3.  Change the "MINIMUM MINUTES PLAYED" option to 1200 minutes
+
+You should now have an interactive graph that looks like this:
+
+![](images/Web%20capture_8-2-2023_195044_projects.fivethirtyeight.com.jpeg)
+
+## Attempt at Reproduction
+
 Loading packages
 
 ```{r}
 library(here) #to set paths
 library(readr) #for loading csv files
 library(ggplot2)
+library(plotly)
 ```
 
 Loading the data
@@ -42,4 +65,58 @@ head(rawdata_2022)
 str(rawdata_2022) #used to see how data is structured 
 ```
 
-I am interested in plotting Offensive RAPTOR rating (independent variable) vs Defensive RAPTOR rating (dependent variable)
+I am only interested in plotting players during the 2021-2022 Season who have played 1042 minutes or more
+
+```{r}
+#Extracting players from teh 2022 season 
+rawdata_2022 <- rawdata[rawdata$season == '2022', ]
+
+#Extracting players that have played 1200 minutes or more 
+clean_data <- rawdata_2022[rawdata_2022$mp > 1200,]
+```
+
+Using ggplot2 to replicate the data plot produced by FiveThirtyEight that gives a visual of the RAPTOR metric of NBA players who played 1042 minutes of more during the 2021-2022 season
+
+```{r}
+#using the clean data set to produce the background to the scatter plot
+g1 <- 
+  ggplot(clean_data, aes(x=raptor_offense, y=raptor_defense)) +
+  geom_rect(aes(xmin=-10,xmax=0,ymin=-10,ymax=0),fill="pink",alpha=0.01) +
+  geom_rect(aes(xmin=0,xmax=10,ymin=0,ymax=10),fill='turquoise',alpha=0.01) +
+  labs(x = "Offensive RAPTOR rating", y = "Defensive RAPTOR rating")
+
+g1
+```
+
+```{r}
+#adding data points that have been shaped and colored to match the FiveThirtyEight plot#
+g2 <- g1 + geom_point(shape = 21, colour = "black", fill = "white", size = 4, stroke = 1 ) + xlim(-10,10) + ylim(-10,10)
+g2
+```
+
+```{r}
+#Adding annoations to the background
+g3 <- g2 + theme(panel.grid.minor = element_blank()) +  annotate(geom="label", x=-9,y=10,label="- offensive", fill="pink") +
+  annotate(geom="label", x=-9,y=8,label="+ defensive", fill='turquoise') +
+  annotate(geom="label", x=-9,y=-10,label="- defensive", fill='pink') +
+  annotate(geom="label", x=-9,y=-8,label="- offensive", fill='pink') + 
+  annotate(geom="label", x=9,y=10,label="+ offensive", fill='turquoise') +
+  annotate(geom="label", x=9,y=8,label="+ defensive", fill='turquoise') +
+  annotate(geom="label", x=9,y=-8,label="+ offensive", fill='turquoise') +
+  annotate(geom="label", x=9,y=-10,label="- defensive", fill='pink')
+g3
+```
+
+##  Reflection
+
+The overall process was pretty fun and pushed me to explore the capabilities of ggplot2 functions. I would give myself a solid 85/100 for the end result. The colors of my plot do not exactly match the colors used in the FiveThirtyEight plot. Also, I struggled to make my plot interactive using ggplotly. When I attempted to use ggplotly, the background of my plot was lost. I am sure there is a simple solution to this that I will look into in the near future. Below is an example of using the ggplotly function and the background of the scatter plot disappearing. In addition, I would like to figure out how to edit the interactive dots on the scatter plot to present the player name when selected on.
+
+```{r}
+ggplotly(g3)
+```
+
+## Key Resources
+
+-   For editing scatter plot dot shapes and colors, and for editing grid lines I turned to <https://ggplot2.tidyverse.org>
+
+-   Coloring different areas of the background I used <https://statisticsglobe.com/draw-ggplot2-plot-different-background-colors-region-r>

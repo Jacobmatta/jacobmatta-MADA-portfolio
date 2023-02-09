@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -58,6 +121,14 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="site_libs/htmlwidgets-1.6.0/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -101,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Tidy Tuesday Exercise</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="././data_analysis_exercise.html">
+    <a class="dropdown-item" href="././dataanalysis_exercise.html">
  <span class="dropdown-text">R Data Analysis Exercise</span></a>
   </li>  
     </ul>
@@ -144,9 +215,302 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Placeholder file for the future visualization exercise.</p>
+<section id="reproduction-of-a-professional-looking-graph" class="level2">
+<h2 class="anchored" data-anchor-id="reproduction-of-a-professional-looking-graph">Reproduction of a Professional Looking Graph</h2>
+<p>My professional looking graph of choice is from <a href="https://fivethirtyeight.com">FiveThirtyEight.com</a> is a scatter of NBA players’ RAPTOR metric from the 2021-2022 season. For context, RAPTOR is an all emcompassing NBA player statistic designed by FiveThirtyEight that was designed to evaluate player performance. I chose to reproduce this plot because I am an NBA fan myself, that perfers to stay updated on the box scores rather than actually watching the games live.</p>
+</section>
+<section id="access-the-professional-graph" class="level2">
+<h2 class="anchored" data-anchor-id="access-the-professional-graph">Access the Professional Graph</h2>
+<p>The scatter plot can be found at this <a href="https://projects.fivethirtyeight.com/nba-player-ratings/">link</a>. After clicking on the link, scroll down to the scatter plot titled “Where every player in the NBA stands, according to RAPTOR”.</p>
+</section>
+<section id="adjusting-the-professional-interactive-graph" class="level2">
+<h2 class="anchored" data-anchor-id="adjusting-the-professional-interactive-graph">Adjusting the Professional Interactive Graph</h2>
+<p>Since this professional scatter plot I will be recreating is interactive, I will adjust it to visualize players in the 2021-2022 NBA Season who played 1040 minutes or more. Follow the directions below to do so.</p>
+<ol type="1">
+<li>Scroll down to the scatter plot titled “Where every player in the NBA stands, according to RAPTOR” if you haven’t already</li>
+<li>Adjust the interactive graph by selecting the ‘21-22’ and deselecting ‘22-23’ in the options titles “CHOOSE SEASON(S)”.</li>
+<li>Change the “MINIMUM MINUTES PLAYED” option to 1200 minutes</li>
+</ol>
+<p>You should now have an interactive graph that looks like this:</p>
+<p><img src="images/Web capture_8-2-2023_195044_projects.fivethirtyeight.com.jpeg" class="img-fluid"></p>
+</section>
+<section id="attempt-at-reproduction" class="level2">
+<h2 class="anchored" data-anchor-id="attempt-at-reproduction">Attempt at Reproduction</h2>
+<p>Loading packages</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here) <span class="co">#to set paths</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/jacobmatta/Documents/R/jacobmatta-MADA-portfolio</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="co">#for loading csv files</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'plotly'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:ggplot2':
+
+    last_plot</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    filter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:graphics':
+
+    layout</code></pre>
+</div>
+</div>
+<p>Loading the data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"raptor_by_nba_player.csv"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>rawdata <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(data_location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 4685 Columns: 21
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (2): player_name, player_id
+dbl (19): season, poss, mp, raptor_box_offense, raptor_box_defense, raptor_b...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>Examining data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rawdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 21
+  player_name playe…¹ season  poss    mp rapto…² rapto…³ rapto…⁴ rapto…⁵ rapto…⁶
+  &lt;chr&gt;       &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 Alex Abrin… abrina…   2017  2387  1135   0.746  -0.373   0.373  -0.419 -3.86  
+2 Alex Abrin… abrina…   2018  2546  1244   0.318  -1.73   -1.41   -1.29  -0.0497
+3 Alex Abrin… abrina…   2019  1279   588  -3.22    1.08   -2.14   -6.16   4.90  
+4 Precious A… achiup…   2021  1581   749  -4.12    1.36   -2.76   -4.05  -0.920 
+5 Precious A… achiup…   2022  3802  1892  -2.52    1.76   -0.758  -1.69   3.10  
+6 Quincy Acy  acyqu01   2014  1716   847  -1.72    0.133  -1.58   -0.325 -1.66  
+# … with 11 more variables: raptor_onoff_total &lt;dbl&gt;, raptor_offense &lt;dbl&gt;,
+#   raptor_defense &lt;dbl&gt;, raptor_total &lt;dbl&gt;, war_total &lt;dbl&gt;,
+#   war_reg_season &lt;dbl&gt;, war_playoffs &lt;dbl&gt;, predator_offense &lt;dbl&gt;,
+#   predator_defense &lt;dbl&gt;, predator_total &lt;dbl&gt;, pace_impact &lt;dbl&gt;, and
+#   abbreviated variable names ¹​player_id, ²​raptor_box_offense,
+#   ³​raptor_box_defense, ⁴​raptor_box_total, ⁵​raptor_onoff_offense,
+#   ⁶​raptor_onoff_defense</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(rawdata) <span class="co">#used to see how data is structured </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>spc_tbl_ [4,685 × 21] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ player_name         : chr [1:4685] "Alex Abrines" "Alex Abrines" "Alex Abrines" "Precious Achiuwa" ...
+ $ player_id           : chr [1:4685] "abrinal01" "abrinal01" "abrinal01" "achiupr01" ...
+ $ season              : num [1:4685] 2017 2018 2019 2021 2022 ...
+ $ poss                : num [1:4685] 2387 2546 1279 1581 3802 ...
+ $ mp                  : num [1:4685] 1135 1244 588 749 1892 ...
+ $ raptor_box_offense  : num [1:4685] 0.746 0.318 -3.216 -4.123 -2.522 ...
+ $ raptor_box_defense  : num [1:4685] -0.373 -1.725 1.078 1.359 1.764 ...
+ $ raptor_box_total    : num [1:4685] 0.373 -1.408 -2.137 -2.764 -0.758 ...
+ $ raptor_onoff_offense: num [1:4685] -0.419 -1.292 -6.159 -4.051 -1.688 ...
+ $ raptor_onoff_defense: num [1:4685] -3.857 -0.0497 4.9012 -0.9197 3.1034 ...
+ $ raptor_onoff_total  : num [1:4685] -4.28 -1.34 -1.26 -4.97 1.42 ...
+ $ raptor_offense      : num [1:4685] 0.5434 -0.0208 -4.0402 -4.3476 -2.5174 ...
+ $ raptor_defense      : num [1:4685] -1.145 -1.503 1.886 0.955 2.144 ...
+ $ raptor_total        : num [1:4685] -0.601 -1.523 -2.155 -3.393 -0.373 ...
+ $ war_total           : num [1:4685] 1.249 0.777 0.178 -0.246 2.263 ...
+ $ war_reg_season      : num [1:4685] 1.448 0.466 0.178 -0.247 2.31 ...
+ $ war_playoffs        : num [1:4685] -0.1987 0.311392 0 0.000721 -0.046953 ...
+ $ predator_offense    : num [1:4685] 0.0771 -0.1746 -4.5777 -3.8177 -2.484 ...
+ $ predator_defense    : num [1:4685] -1.039 -1.113 1.543 0.475 2.024 ...
+ $ predator_total      : num [1:4685] -0.962 -1.287 -3.034 -3.343 -0.46 ...
+ $ pace_impact         : num [1:4685] 0.326 -0.456 -0.268 0.329 -0.729 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   player_name = col_character(),
+  ..   player_id = col_character(),
+  ..   season = col_double(),
+  ..   poss = col_double(),
+  ..   mp = col_double(),
+  ..   raptor_box_offense = col_double(),
+  ..   raptor_box_defense = col_double(),
+  ..   raptor_box_total = col_double(),
+  ..   raptor_onoff_offense = col_double(),
+  ..   raptor_onoff_defense = col_double(),
+  ..   raptor_onoff_total = col_double(),
+  ..   raptor_offense = col_double(),
+  ..   raptor_defense = col_double(),
+  ..   raptor_total = col_double(),
+  ..   war_total = col_double(),
+  ..   war_reg_season = col_double(),
+  ..   war_playoffs = col_double(),
+  ..   predator_offense = col_double(),
+  ..   predator_defense = col_double(),
+  ..   predator_total = col_double(),
+  ..   pace_impact = col_double()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
+</div>
+</div>
+<p>Only interested in player raptor stats in the 2022 season, so I will extract all the observations of the 2022 season</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#extracting only players in the 2022 season </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>rawdata_2022 <span class="ot">&lt;-</span> rawdata[rawdata<span class="sc">$</span>season <span class="sc">==</span> <span class="st">'2022'</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Examining extracted data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rawdata_2022)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 21
+  player_name playe…¹ season  poss    mp rapto…² rapto…³ rapto…⁴ rapto…⁵ rapto…⁶
+  &lt;chr&gt;       &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 Precious A… achiup…   2022  3802  1892  -2.52     1.76  -0.758   -1.69   3.10 
+2 Steven Ada… adamss…   2022  4392  2113   0.471    1.35   1.82     6.29  -3.17 
+3 Bam Adebayo adebab…   2022  4893  2439  -0.399    3.72   3.32     1.78   3.48 
+4 Santi Alda… aldams…   2022   763   360  -2.58    -2.42  -5.00    -2.71   1.16 
+5 LaMarcus A… aldril…   2022  2205  1050  -0.516    2.25   1.73     1.09  -0.462
+6 Nickeil Al… alexan…   2022  3037  1471  -1.50    -1.21  -2.71    -2.40  -0.957
+# … with 11 more variables: raptor_onoff_total &lt;dbl&gt;, raptor_offense &lt;dbl&gt;,
+#   raptor_defense &lt;dbl&gt;, raptor_total &lt;dbl&gt;, war_total &lt;dbl&gt;,
+#   war_reg_season &lt;dbl&gt;, war_playoffs &lt;dbl&gt;, predator_offense &lt;dbl&gt;,
+#   predator_defense &lt;dbl&gt;, predator_total &lt;dbl&gt;, pace_impact &lt;dbl&gt;, and
+#   abbreviated variable names ¹​player_id, ²​raptor_box_offense,
+#   ³​raptor_box_defense, ⁴​raptor_box_total, ⁵​raptor_onoff_offense,
+#   ⁶​raptor_onoff_defense</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(rawdata_2022) <span class="co">#used to see how data is structured </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [606 × 21] (S3: tbl_df/tbl/data.frame)
+ $ player_name         : chr [1:606] "Precious Achiuwa" "Steven Adams" "Bam Adebayo" "Santi Aldama" ...
+ $ player_id           : chr [1:606] "achiupr01" "adamsst01" "adebaba01" "aldamsa01" ...
+ $ season              : num [1:606] 2022 2022 2022 2022 2022 ...
+ $ poss                : num [1:606] 3802 4392 4893 763 2205 ...
+ $ mp                  : num [1:606] 1892 2113 2439 360 1050 ...
+ $ raptor_box_offense  : num [1:606] -2.522 0.471 -0.399 -2.582 -0.516 ...
+ $ raptor_box_defense  : num [1:606] 1.76 1.35 3.72 -2.42 2.25 ...
+ $ raptor_box_total    : num [1:606] -0.758 1.82 3.322 -5.001 1.73 ...
+ $ raptor_onoff_offense: num [1:606] -1.69 6.29 1.78 -2.71 1.09 ...
+ $ raptor_onoff_defense: num [1:606] 3.103 -3.165 3.481 1.163 -0.462 ...
+ $ raptor_onoff_total  : num [1:606] 1.416 3.126 5.257 -1.55 0.631 ...
+ $ raptor_offense      : num [1:606] -2.51737 1.68548 0.00708 -2.80948 -0.24116 ...
+ $ raptor_defense      : num [1:606] 2.14 0.45 3.85 -1.87 1.83 ...
+ $ raptor_total        : num [1:606] -0.373 2.136 3.855 -4.675 1.59 ...
+ $ war_total           : num [1:606] 2.263 5.264 8.275 -0.355 2.32 ...
+ $ war_reg_season      : num [1:606] 2.31 5.141 6.103 -0.355 2.32 ...
+ $ war_playoffs        : num [1:606] -0.047 0.123 2.173 0 0 ...
+ $ predator_offense    : num [1:606] -2.484 1.373 0.305 -1.644 0.291 ...
+ $ predator_defense    : num [1:606] 2.024 1.526 3.41 -2.281 0.845 ...
+ $ predator_total      : num [1:606] -0.46 2.9 3.72 -3.92 1.14 ...
+ $ pace_impact         : num [1:606] -0.729 -0.242 -0.118 0.358 -0.226 ...</code></pre>
+</div>
+</div>
+<p>I am only interested in plotting players during the 2021-2022 Season who have played 1042 minutes or more</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Extracting players from teh 2022 season </span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>rawdata_2022 <span class="ot">&lt;-</span> rawdata[rawdata<span class="sc">$</span>season <span class="sc">==</span> <span class="st">'2022'</span>, ]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Extracting players that have played 1200 minutes or more </span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> rawdata_2022[rawdata_2022<span class="sc">$</span>mp <span class="sc">&gt;</span> <span class="dv">1200</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Using ggplot2 to replicate the data plot produced by FiveThirtyEight that gives a visual of the RAPTOR metric of NBA players who played 1042 minutes of more during the 2021-2022 season</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#using the clean data set to produce the background to the scatter plot</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(clean_data, <span class="fu">aes</span>(<span class="at">x=</span>raptor_offense, <span class="at">y=</span>raptor_defense)) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="fu">aes</span>(<span class="at">xmin=</span><span class="sc">-</span><span class="dv">10</span>,<span class="at">xmax=</span><span class="dv">0</span>,<span class="at">ymin=</span><span class="sc">-</span><span class="dv">10</span>,<span class="at">ymax=</span><span class="dv">0</span>),<span class="at">fill=</span><span class="st">"pink"</span>,<span class="at">alpha=</span><span class="fl">0.01</span>) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="fu">aes</span>(<span class="at">xmin=</span><span class="dv">0</span>,<span class="at">xmax=</span><span class="dv">10</span>,<span class="at">ymin=</span><span class="dv">0</span>,<span class="at">ymax=</span><span class="dv">10</span>),<span class="at">fill=</span><span class="st">'turquoise'</span>,<span class="at">alpha=</span><span class="fl">0.01</span>) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Offensive RAPTOR rating"</span>, <span class="at">y =</span> <span class="st">"Defensive RAPTOR rating"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>g1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="visualization_exercise_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#adding data points that have been shaped and colored to match the FiveThirtyEight plot#</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> g1 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">stroke =</span> <span class="dv">1</span> ) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>g2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="visualization_exercise_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Adding annoations to the background</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> g2 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"label"</span>, <span class="at">x=</span><span class="sc">-</span><span class="dv">9</span>,<span class="at">y=</span><span class="dv">10</span>,<span class="at">label=</span><span class="st">"- offensive"</span>, <span class="at">fill=</span><span class="st">"pink"</span>) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"label"</span>, <span class="at">x=</span><span class="sc">-</span><span class="dv">9</span>,<span class="at">y=</span><span class="dv">8</span>,<span class="at">label=</span><span class="st">"+ defensive"</span>, <span class="at">fill=</span><span class="st">'turquoise'</span>) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"label"</span>, <span class="at">x=</span><span class="sc">-</span><span class="dv">9</span>,<span class="at">y=</span><span class="sc">-</span><span class="dv">10</span>,<span class="at">label=</span><span class="st">"- defensive"</span>, <span class="at">fill=</span><span class="st">'pink'</span>) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"label"</span>, <span class="at">x=</span><span class="sc">-</span><span class="dv">9</span>,<span class="at">y=</span><span class="sc">-</span><span class="dv">8</span>,<span class="at">label=</span><span class="st">"- offensive"</span>, <span class="at">fill=</span><span class="st">'pink'</span>) <span class="sc">+</span> </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"label"</span>, <span class="at">x=</span><span class="dv">9</span>,<span class="at">y=</span><span class="dv">10</span>,<span class="at">label=</span><span class="st">"+ offensive"</span>, <span class="at">fill=</span><span class="st">'turquoise'</span>) <span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"label"</span>, <span class="at">x=</span><span class="dv">9</span>,<span class="at">y=</span><span class="dv">8</span>,<span class="at">label=</span><span class="st">"+ defensive"</span>, <span class="at">fill=</span><span class="st">'turquoise'</span>) <span class="sc">+</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"label"</span>, <span class="at">x=</span><span class="dv">9</span>,<span class="at">y=</span><span class="sc">-</span><span class="dv">8</span>,<span class="at">label=</span><span class="st">"+ offensive"</span>, <span class="at">fill=</span><span class="st">'turquoise'</span>) <span class="sc">+</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"label"</span>, <span class="at">x=</span><span class="dv">9</span>,<span class="at">y=</span><span class="sc">-</span><span class="dv">10</span>,<span class="at">label=</span><span class="st">"- defensive"</span>, <span class="at">fill=</span><span class="st">'pink'</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>g3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="visualization_exercise_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="reflection" class="level2">
+<h2 class="anchored" data-anchor-id="reflection">Reflection</h2>
+<p>The overall process was pretty fun and pushed me to explore the capabilities of ggplot2 functions. I would give myself a solid 85/100 for the end result. The colors of my plot do not exactly match the colors used in the FiveThirtyEight plot. Also, I struggled to make my plot interactive using ggplotly. When I attempted to use ggplotly, the background of my plot was lost. I am sure there is a simple solution to this that I will look into in the near future. Below is an example of using the ggplotly function and the background of the scatter plot disappearing.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(g3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomLabel() has yet to be implemented in plotly.
+  If you'd like to see this geom implemented,
+  Please open an issue with your example code at
+  https://github.com/ropensci/plotly/issues
+
+Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomLabel() has yet to be implemented in plotly.
+  If you'd like to see this geom implemented,
+  Please open an issue with your example code at
+  https://github.com/ropensci/plotly/issues
+
+Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomLabel() has yet to be implemented in plotly.
+  If you'd like to see this geom implemented,
+  Please open an issue with your example code at
+  https://github.com/ropensci/plotly/issues
+
+Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomLabel() has yet to be implemented in plotly.
+  If you'd like to see this geom implemented,
+  Please open an issue with your example code at
+  https://github.com/ropensci/plotly/issues
+
+Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomLabel() has yet to be implemented in plotly.
+  If you'd like to see this geom implemented,
+  Please open an issue with your example code at
+  https://github.com/ropensci/plotly/issues
+
+Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomLabel() has yet to be implemented in plotly.
+  If you'd like to see this geom implemented,
+  Please open an issue with your example code at
+  https://github.com/ropensci/plotly/issues
+
+Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomLabel() has yet to be implemented in plotly.
+  If you'd like to see this geom implemented,
+  Please open an issue with your example code at
+  https://github.com/ropensci/plotly/issues
+
+Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomLabel() has yet to be implemented in plotly.
+  If you'd like to see this geom implemented,
+  Please open an issue with your example code at
+  https://github.com/ropensci/plotly/issues</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-33d2c6108a831544c901" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-33d2c6108a831544c901">{"x":{"data":[{"x":[-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10,null,-10,-10,0,0,-10],"y":[-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10,null,-10,0,0,-10,-10],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(255,192,203,0.01)","hoveron":"fills","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0,null,0,0,10,10,0],"y":[0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0,null,0,10,10,0,0],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(64,224,208,0.01)","hoveron":"fills","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[-2.51737239,1.68548015,0.007084622,-1.773719916,0.214310753,0.194234674,-1.324155641,5.587616641,0.124709633,-0.123852339,0.155638886,-0.914535316,-0.240288974,2.711671293,0.004397522,-2.114574058,3.093926907,1.178854744,0.144600967,-0.656354941,-0.533456488,-1.563829037,-3.633769165,1.065695723,0.466771665,1.679362496,0.125940707,-1.188650384,-2.223354894,2.849609391,0.284362568,4.1251606,0.064329243,-2.816716114,1.790096472,1.736542251,-1.130375456,2.356553988,0.112986616,0.339233627,1.719575058,2.659996012,-0.21231413,1.071192011,4.738007859,-0.990411825,0.591462154,-0.515273799,0.355837349,-1.326704847,1.320345726,2.798122861,0.264000098,0.542347912,2.063415926,0.602942525,-0.728693314,-2.236995899,-0.400414711,-1.244426394,1.324663822,6.242839239,-0.33533752,-2.313661519,3.6460724,-0.880464775,1.884695177,5.740278663,-1.397355963,-1.608283994,-0.445701238,-0.76408392,4.449173785,1.753872341,3.615599885,-2.515975726,0.960332265,-0.132854384,0.75910198,1.876641143,0.369515914,1.155456295,4.769545938,-1.89370601,2.752404062,0.063774144,0.578395602,0.046728207,0.931291532,-0.522856679,-0.248577381,-0.962127185,0.140909127,-1.538791421,-1.506757225,2.764219876,-3.619847276,-0.088352513,3.522769701,2.053165171,-1.118785292,0.718566386,1.197369424,0.860084538,-1.194148276,-3.684559365,-0.795655173,1.349516833,1.342456691,-1.052581277,3.600652307,-1.179647834,0.586486039,-2.399577767,0.397257846,-1.89069451,2.329491668,2.012756378,5.033585516,-0.239789735,-0.900662294,4.63728178,1.015752832,1.314922376,8.520714776,-1.159820363,1.373547283,-0.39720473,1.539114972,0.07809705,-2.030055586,0.25183469,-0.932925779,-2.691130927,-1.754856339,2.359725953,-2.363627477,0.982238167,-0.06436488,1.929466557,1.621001145,-0.471046659,-0.138122012,-2.233975542,1.6420295,-0.461315921,0.319841826,-0.207321974,1.089276874,-1.292151762,1.300616638,3.11489157,-2.259979487,-0.111129605,0.000613114,-1.583770648,0.170183185,-3.347492554,1.935834412,0.229717146,-0.492110158,-1.609627041,4.72438845,-2.72394979,1.785579797,4.981662827,-0.057088741,1.464550331,3.0524332,-0.448768264,0.259337123,-0.203586648,-3.131876191,-3.560045587,-1.110598811,0.244022978,-0.613474897,0.291159605,4.359841174,-0.615298415,1.384994588,-2.187550097,1.639777671,-2.860222052,1.958804701,0.174941877,0.750195238,0.431906895,1.260024122,0.158415244,1.298798141,-0.995442976,1.972848433,2.355006639,-2.287313207,0.001951037,-2.660968625,-0.36034536,-1.810428976,0.599870431,0.45620171,-1.658261505,2.748444735,2.345835439,1.374353032,-2.006738409,-1.041047916,-0.952293978,1.913557096,2.198466348,1.222840849,-3.137764582,1.970906462,-4.157846233,-1.305333949,3.957832875,0.979911644,-2.216038597,-0.543636298,3.30736042,1.422214477,-0.626346827,-1.152313266,1.005998238,0.149206737,3.445890985,-0.224490231,-0.397128219,-1.816075359,0.474579609,-1.408271311,0.064495147,-1.155953572,0.282961483,0.358459763,1.007040496,-1.846780242,0.217424,-1.024984185,0.639223995,-0.993926456,-0.803181915,-0.254751162,6.715589373,-0.693764955],"y":[2.144151407,0.450348467,3.848342285,-1.22306792,-0.069387608,4.089200453,0.717769643,2.479239158,-1.801803438,-1.959666521,-0.176156146,2.025555642,1.121058918,-0.658378137,2.937473605,0.584924445,0.934049805,-1.690969928,0.690185824,-0.922672889,-1.413020408,1.709506445,-0.760846276,0.602301211,-2.031229155,1.938938256,-2.419866249,1.747468187,2.034542558,-0.607251871,-2.440703746,-0.019035263,0.911790225,-0.97931697,0.942666776,-0.049728888,-2.792230478,-0.66015958,3.143497444,0.318831667,1.00791076,-0.544413578,-0.147103445,1.44183446,1.266305635,-0.11902498,2.062167469,1.442330882,4.991965676,-2.724527744,1.692370387,-0.391520262,-0.875610416,0.682048774,1.17482097,0.228709067,2.641103454,0.043519053,1.579044142,-0.432127533,-1.052646318,0.552443603,2.790039871,0.653960097,-2.277408934,1.289832737,-0.480693916,0.642512508,1.186369668,-1.943165851,2.351629895,0.954203868,0.052726612,0.049473398,4.160000394,-1.564760635,0.576683864,-3.48708174,-1.843075633,-2.600854934,-0.678260062,-2.23066473,-0.268326233,0.462895069,-0.876446005,6.82254861,-0.214953417,-2.67232903,-1.577517949,-0.68826536,1.334798771,4.756456224,1.658042305,-2.727072257,-1.878335689,-1.066540207,-2.088148931,0.493637214,-1.456575731,0.531968047,-0.348341157,-1.105967994,1.5147277,-0.092354401,-1.272255135,-0.373456519,-1.2226442,-1.258927522,-1.133496221,1.872069124,1.167859688,-1.948398866,3.734354409,-0.018227946,-0.885688613,-0.241319062,-1.551328859,-1.204599457,-0.87975034,2.320862309,-0.052361293,0.104579405,1.733141455,-0.411239694,6.05169604,2.614873485,-0.506442888,-0.126015498,-0.667453428,-2.11489418,2.10442001,0.580825385,-1.093659219,-1.986995085,-0.61228031,-2.282752544,0.081907091,-1.836573139,2.415500501,0.342252129,1.162018228,-1.547108502,0.647163839,-1.432108524,-0.888950968,2.548549611,0.946465149,-2.795675647,1.947772444,2.996706288,-1.523845893,-0.576731027,1.946144605,-4.534228117,1.819841662,-3.287460932,1.944413927,0.089664202,-0.667850723,-1.807121716,-1.119206673,0.39638324,-2.727445636,1.60147509,-1.235187482,-1.045587476,-3.813781072,-2.005096721,-0.046557939,-0.714688204,-1.414498005,3.387326215,-2.493167126,1.078517898,0.290011941,1.197038161,-1.217436279,-1.119364949,-0.33992263,0.741393508,4.636689319,0.931407815,2.390280846,-0.040485954,-1.052269162,-0.084840217,1.797162217,1.609143823,0.600142718,0.092748624,-2.683743053,-0.050879868,-0.323927664,1.543113903,-0.99263248,1.685455645,0.669345187,-1.063404909,-1.07473888,-1.087805396,2.43861167,-3.405583238,0.244039324,-0.790147505,2.280796547,-0.870595275,-1.267561226,-0.150386765,-0.196050633,-2.46685906,1.605841835,0.833906934,0.314867585,2.826072658,0.775755487,1.587377649,-1.750901175,4.007251573,-0.254374289,-1.18360264,-1.023158439,2.327912514,2.46248994,0.549566828,1.736323812,1.07285014,-0.564849646,1.339965334,1.555940608,0.844177275,-1.825990531,-1.38219855,-2.06963551,-2.349884002,3.106443605,2.26106652,-1.700197397,1.919715523,0.379101665,3.016426321,-0.900953743,-1.237441264,2.544225362,-3.04964849,0.723358462],"text":["raptor_offense: -2.517372390<br />raptor_defense:  2.14415141","raptor_offense:  1.685480150<br />raptor_defense:  0.45034847","raptor_offense:  0.007084622<br />raptor_defense:  3.84834229","raptor_offense: -1.773719916<br />raptor_defense: -1.22306792","raptor_offense:  0.214310753<br />raptor_defense: -0.06938761","raptor_offense:  0.194234674<br />raptor_defense:  4.08920045","raptor_offense: -1.324155641<br />raptor_defense:  0.71776964","raptor_offense:  5.587616641<br />raptor_defense:  2.47923916","raptor_offense:  0.124709633<br />raptor_defense: -1.80180344","raptor_offense: -0.123852339<br />raptor_defense: -1.95966652","raptor_offense:  0.155638886<br />raptor_defense: -0.17615615","raptor_offense: -0.914535316<br />raptor_defense:  2.02555564","raptor_offense: -0.240288974<br />raptor_defense:  1.12105892","raptor_offense:  2.711671293<br />raptor_defense: -0.65837814","raptor_offense:  0.004397522<br />raptor_defense:  2.93747361","raptor_offense: -2.114574058<br />raptor_defense:  0.58492444","raptor_offense:  3.093926907<br />raptor_defense:  0.93404981","raptor_offense:  1.178854744<br />raptor_defense: -1.69096993","raptor_offense:  0.144600967<br />raptor_defense:  0.69018582","raptor_offense: -0.656354941<br />raptor_defense: -0.92267289","raptor_offense: -0.533456488<br />raptor_defense: -1.41302041","raptor_offense: -1.563829037<br />raptor_defense:  1.70950644","raptor_offense: -3.633769165<br />raptor_defense: -0.76084628","raptor_offense:  1.065695723<br />raptor_defense:  0.60230121","raptor_offense:  0.466771665<br />raptor_defense: -2.03122916","raptor_offense:  1.679362496<br />raptor_defense:  1.93893826","raptor_offense:  0.125940707<br />raptor_defense: -2.41986625","raptor_offense: -1.188650384<br />raptor_defense:  1.74746819","raptor_offense: -2.223354894<br />raptor_defense:  2.03454256","raptor_offense:  2.849609391<br />raptor_defense: -0.60725187","raptor_offense:  0.284362568<br />raptor_defense: -2.44070375","raptor_offense:  4.125160600<br />raptor_defense: -0.01903526","raptor_offense:  0.064329243<br />raptor_defense:  0.91179022","raptor_offense: -2.816716114<br />raptor_defense: -0.97931697","raptor_offense:  1.790096472<br />raptor_defense:  0.94266678","raptor_offense:  1.736542251<br />raptor_defense: -0.04972889","raptor_offense: -1.130375456<br />raptor_defense: -2.79223048","raptor_offense:  2.356553988<br />raptor_defense: -0.66015958","raptor_offense:  0.112986616<br />raptor_defense:  3.14349744","raptor_offense:  0.339233627<br />raptor_defense:  0.31883167","raptor_offense:  1.719575058<br />raptor_defense:  1.00791076","raptor_offense:  2.659996012<br />raptor_defense: -0.54441358","raptor_offense: -0.212314130<br />raptor_defense: -0.14710344","raptor_offense:  1.071192011<br />raptor_defense:  1.44183446","raptor_offense:  4.738007859<br />raptor_defense:  1.26630563","raptor_offense: -0.990411825<br />raptor_defense: -0.11902498","raptor_offense:  0.591462154<br />raptor_defense:  2.06216747","raptor_offense: -0.515273799<br />raptor_defense:  1.44233088","raptor_offense:  0.355837349<br />raptor_defense:  4.99196568","raptor_offense: -1.326704847<br />raptor_defense: -2.72452774","raptor_offense:  1.320345726<br />raptor_defense:  1.69237039","raptor_offense:  2.798122861<br />raptor_defense: -0.39152026","raptor_offense:  0.264000098<br />raptor_defense: -0.87561042","raptor_offense:  0.542347912<br />raptor_defense:  0.68204877","raptor_offense:  2.063415926<br />raptor_defense:  1.17482097","raptor_offense:  0.602942525<br />raptor_defense:  0.22870907","raptor_offense: -0.728693314<br />raptor_defense:  2.64110345","raptor_offense: -2.236995899<br />raptor_defense:  0.04351905","raptor_offense: -0.400414711<br />raptor_defense:  1.57904414","raptor_offense: -1.244426394<br />raptor_defense: -0.43212753","raptor_offense:  1.324663822<br />raptor_defense: -1.05264632","raptor_offense:  6.242839239<br />raptor_defense:  0.55244360","raptor_offense: -0.335337520<br />raptor_defense:  2.79003987","raptor_offense: -2.313661519<br />raptor_defense:  0.65396010","raptor_offense:  3.646072400<br />raptor_defense: -2.27740893","raptor_offense: -0.880464775<br />raptor_defense:  1.28983274","raptor_offense:  1.884695177<br />raptor_defense: -0.48069392","raptor_offense:  5.740278663<br />raptor_defense:  0.64251251","raptor_offense: -1.397355963<br />raptor_defense:  1.18636967","raptor_offense: -1.608283994<br />raptor_defense: -1.94316585","raptor_offense: -0.445701238<br />raptor_defense:  2.35162989","raptor_offense: -0.764083920<br />raptor_defense:  0.95420387","raptor_offense:  4.449173785<br />raptor_defense:  0.05272661","raptor_offense:  1.753872341<br />raptor_defense:  0.04947340","raptor_offense:  3.615599885<br />raptor_defense:  4.16000039","raptor_offense: -2.515975726<br />raptor_defense: -1.56476064","raptor_offense:  0.960332265<br />raptor_defense:  0.57668386","raptor_offense: -0.132854384<br />raptor_defense: -3.48708174","raptor_offense:  0.759101980<br />raptor_defense: -1.84307563","raptor_offense:  1.876641143<br />raptor_defense: -2.60085493","raptor_offense:  0.369515914<br />raptor_defense: -0.67826006","raptor_offense:  1.155456295<br />raptor_defense: -2.23066473","raptor_offense:  4.769545938<br />raptor_defense: -0.26832623","raptor_offense: -1.893706010<br />raptor_defense:  0.46289507","raptor_offense:  2.752404062<br />raptor_defense: -0.87644601","raptor_offense:  0.063774144<br />raptor_defense:  6.82254861","raptor_offense:  0.578395602<br />raptor_defense: -0.21495342","raptor_offense:  0.046728207<br />raptor_defense: -2.67232903","raptor_offense:  0.931291532<br />raptor_defense: -1.57751795","raptor_offense: -0.522856679<br />raptor_defense: -0.68826536","raptor_offense: -0.248577381<br />raptor_defense:  1.33479877","raptor_offense: -0.962127185<br />raptor_defense:  4.75645622","raptor_offense:  0.140909127<br />raptor_defense:  1.65804230","raptor_offense: -1.538791421<br />raptor_defense: -2.72707226","raptor_offense: -1.506757225<br />raptor_defense: -1.87833569","raptor_offense:  2.764219876<br />raptor_defense: -1.06654021","raptor_offense: -3.619847276<br />raptor_defense: -2.08814893","raptor_offense: -0.088352513<br />raptor_defense:  0.49363721","raptor_offense:  3.522769701<br />raptor_defense: -1.45657573","raptor_offense:  2.053165171<br />raptor_defense:  0.53196805","raptor_offense: -1.118785292<br />raptor_defense: -0.34834116","raptor_offense:  0.718566386<br />raptor_defense: -1.10596799","raptor_offense:  1.197369424<br />raptor_defense:  1.51472770","raptor_offense:  0.860084538<br />raptor_defense: -0.09235440","raptor_offense: -1.194148276<br />raptor_defense: -1.27225513","raptor_offense: -3.684559365<br />raptor_defense: -0.37345652","raptor_offense: -0.795655173<br />raptor_defense: -1.22264420","raptor_offense:  1.349516833<br />raptor_defense: -1.25892752","raptor_offense:  1.342456691<br />raptor_defense: -1.13349622","raptor_offense: -1.052581277<br />raptor_defense:  1.87206912","raptor_offense:  3.600652307<br />raptor_defense:  1.16785969","raptor_offense: -1.179647834<br />raptor_defense: -1.94839887","raptor_offense:  0.586486039<br />raptor_defense:  3.73435441","raptor_offense: -2.399577767<br />raptor_defense: -0.01822795","raptor_offense:  0.397257846<br />raptor_defense: -0.88568861","raptor_offense: -1.890694510<br />raptor_defense: -0.24131906","raptor_offense:  2.329491668<br />raptor_defense: -1.55132886","raptor_offense:  2.012756378<br />raptor_defense: -1.20459946","raptor_offense:  5.033585516<br />raptor_defense: -0.87975034","raptor_offense: -0.239789735<br />raptor_defense:  2.32086231","raptor_offense: -0.900662294<br />raptor_defense: -0.05236129","raptor_offense:  4.637281780<br />raptor_defense:  0.10457941","raptor_offense:  1.015752832<br />raptor_defense:  1.73314145","raptor_offense:  1.314922376<br />raptor_defense: -0.41123969","raptor_offense:  8.520714776<br />raptor_defense:  6.05169604","raptor_offense: -1.159820363<br />raptor_defense:  2.61487348","raptor_offense:  1.373547283<br />raptor_defense: -0.50644289","raptor_offense: -0.397204730<br />raptor_defense: -0.12601550","raptor_offense:  1.539114972<br />raptor_defense: -0.66745343","raptor_offense:  0.078097050<br />raptor_defense: -2.11489418","raptor_offense: -2.030055586<br />raptor_defense:  2.10442001","raptor_offense:  0.251834690<br />raptor_defense:  0.58082539","raptor_offense: -0.932925779<br />raptor_defense: -1.09365922","raptor_offense: -2.691130927<br />raptor_defense: -1.98699508","raptor_offense: -1.754856339<br />raptor_defense: -0.61228031","raptor_offense:  2.359725953<br />raptor_defense: -2.28275254","raptor_offense: -2.363627477<br />raptor_defense:  0.08190709","raptor_offense:  0.982238167<br />raptor_defense: -1.83657314","raptor_offense: -0.064364880<br />raptor_defense:  2.41550050","raptor_offense:  1.929466557<br />raptor_defense:  0.34225213","raptor_offense:  1.621001145<br />raptor_defense:  1.16201823","raptor_offense: -0.471046659<br />raptor_defense: -1.54710850","raptor_offense: -0.138122012<br />raptor_defense:  0.64716384","raptor_offense: -2.233975542<br />raptor_defense: -1.43210852","raptor_offense:  1.642029500<br />raptor_defense: -0.88895097","raptor_offense: -0.461315921<br />raptor_defense:  2.54854961","raptor_offense:  0.319841826<br />raptor_defense:  0.94646515","raptor_offense: -0.207321974<br />raptor_defense: -2.79567565","raptor_offense:  1.089276874<br />raptor_defense:  1.94777244","raptor_offense: -1.292151762<br />raptor_defense:  2.99670629","raptor_offense:  1.300616638<br />raptor_defense: -1.52384589","raptor_offense:  3.114891570<br />raptor_defense: -0.57673103","raptor_offense: -2.259979487<br />raptor_defense:  1.94614460","raptor_offense: -0.111129605<br />raptor_defense: -4.53422812","raptor_offense:  0.000613114<br />raptor_defense:  1.81984166","raptor_offense: -1.583770648<br />raptor_defense: -3.28746093","raptor_offense:  0.170183185<br />raptor_defense:  1.94441393","raptor_offense: -3.347492554<br />raptor_defense:  0.08966420","raptor_offense:  1.935834412<br />raptor_defense: -0.66785072","raptor_offense:  0.229717146<br />raptor_defense: -1.80712172","raptor_offense: -0.492110158<br />raptor_defense: -1.11920667","raptor_offense: -1.609627041<br />raptor_defense:  0.39638324","raptor_offense:  4.724388450<br />raptor_defense: -2.72744564","raptor_offense: -2.723949790<br />raptor_defense:  1.60147509","raptor_offense:  1.785579797<br />raptor_defense: -1.23518748","raptor_offense:  4.981662827<br />raptor_defense: -1.04558748","raptor_offense: -0.057088741<br />raptor_defense: -3.81378107","raptor_offense:  1.464550331<br />raptor_defense: -2.00509672","raptor_offense:  3.052433200<br />raptor_defense: -0.04655794","raptor_offense: -0.448768264<br />raptor_defense: -0.71468820","raptor_offense:  0.259337123<br />raptor_defense: -1.41449801","raptor_offense: -0.203586648<br />raptor_defense:  3.38732621","raptor_offense: -3.131876191<br />raptor_defense: -2.49316713","raptor_offense: -3.560045587<br />raptor_defense:  1.07851790","raptor_offense: -1.110598811<br />raptor_defense:  0.29001194","raptor_offense:  0.244022978<br />raptor_defense:  1.19703816","raptor_offense: -0.613474897<br />raptor_defense: -1.21743628","raptor_offense:  0.291159605<br />raptor_defense: -1.11936495","raptor_offense:  4.359841174<br />raptor_defense: -0.33992263","raptor_offense: -0.615298415<br />raptor_defense:  0.74139351","raptor_offense:  1.384994588<br />raptor_defense:  4.63668932","raptor_offense: -2.187550097<br />raptor_defense:  0.93140782","raptor_offense:  1.639777671<br />raptor_defense:  2.39028085","raptor_offense: -2.860222052<br />raptor_defense: -0.04048595","raptor_offense:  1.958804701<br />raptor_defense: -1.05226916","raptor_offense:  0.174941877<br />raptor_defense: -0.08484022","raptor_offense:  0.750195238<br />raptor_defense:  1.79716222","raptor_offense:  0.431906895<br />raptor_defense:  1.60914382","raptor_offense:  1.260024122<br />raptor_defense:  0.60014272","raptor_offense:  0.158415244<br />raptor_defense:  0.09274862","raptor_offense:  1.298798141<br />raptor_defense: -2.68374305","raptor_offense: -0.995442976<br />raptor_defense: -0.05087987","raptor_offense:  1.972848433<br />raptor_defense: -0.32392766","raptor_offense:  2.355006639<br />raptor_defense:  1.54311390","raptor_offense: -2.287313207<br />raptor_defense: -0.99263248","raptor_offense:  0.001951037<br />raptor_defense:  1.68545565","raptor_offense: -2.660968625<br />raptor_defense:  0.66934519","raptor_offense: -0.360345360<br />raptor_defense: -1.06340491","raptor_offense: -1.810428976<br />raptor_defense: -1.07473888","raptor_offense:  0.599870431<br />raptor_defense: -1.08780540","raptor_offense:  0.456201710<br />raptor_defense:  2.43861167","raptor_offense: -1.658261505<br />raptor_defense: -3.40558324","raptor_offense:  2.748444735<br />raptor_defense:  0.24403932","raptor_offense:  2.345835439<br />raptor_defense: -0.79014750","raptor_offense:  1.374353032<br />raptor_defense:  2.28079655","raptor_offense: -2.006738409<br />raptor_defense: -0.87059528","raptor_offense: -1.041047916<br />raptor_defense: -1.26756123","raptor_offense: -0.952293978<br />raptor_defense: -0.15038677","raptor_offense:  1.913557096<br />raptor_defense: -0.19605063","raptor_offense:  2.198466348<br />raptor_defense: -2.46685906","raptor_offense:  1.222840849<br />raptor_defense:  1.60584184","raptor_offense: -3.137764582<br />raptor_defense:  0.83390693","raptor_offense:  1.970906462<br />raptor_defense:  0.31486759","raptor_offense: -4.157846233<br />raptor_defense:  2.82607266","raptor_offense: -1.305333949<br />raptor_defense:  0.77575549","raptor_offense:  3.957832875<br />raptor_defense:  1.58737765","raptor_offense:  0.979911644<br />raptor_defense: -1.75090118","raptor_offense: -2.216038597<br />raptor_defense:  4.00725157","raptor_offense: -0.543636298<br />raptor_defense: -0.25437429","raptor_offense:  3.307360420<br />raptor_defense: -1.18360264","raptor_offense:  1.422214477<br />raptor_defense: -1.02315844","raptor_offense: -0.626346827<br />raptor_defense:  2.32791251","raptor_offense: -1.152313266<br />raptor_defense:  2.46248994","raptor_offense:  1.005998238<br />raptor_defense:  0.54956683","raptor_offense:  0.149206737<br />raptor_defense:  1.73632381","raptor_offense:  3.445890985<br />raptor_defense:  1.07285014","raptor_offense: -0.224490231<br />raptor_defense: -0.56484965","raptor_offense: -0.397128219<br />raptor_defense:  1.33996533","raptor_offense: -1.816075359<br />raptor_defense:  1.55594061","raptor_offense:  0.474579609<br />raptor_defense:  0.84417727","raptor_offense: -1.408271311<br />raptor_defense: -1.82599053","raptor_offense:  0.064495147<br />raptor_defense: -1.38219855","raptor_offense: -1.155953572<br />raptor_defense: -2.06963551","raptor_offense:  0.282961483<br />raptor_defense: -2.34988400","raptor_offense:  0.358459763<br />raptor_defense:  3.10644360","raptor_offense:  1.007040496<br />raptor_defense:  2.26106652","raptor_offense: -1.846780242<br />raptor_defense: -1.70019740","raptor_offense:  0.217424000<br />raptor_defense:  1.91971552","raptor_offense: -1.024984185<br />raptor_defense:  0.37910166","raptor_offense:  0.639223995<br />raptor_defense:  3.01642632","raptor_offense: -0.993926456<br />raptor_defense: -0.90095374","raptor_offense: -0.803181915<br />raptor_defense: -1.23744126","raptor_offense: -0.254751162<br />raptor_defense:  2.54422536","raptor_offense:  6.715589373<br />raptor_defense: -3.04964849","raptor_offense: -0.693764955<br />raptor_defense:  0.72335846"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,255,255,1)","opacity":1,"size":15.1181102362205,"symbol":"circle","line":{"width":3.77952755905512,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","mode":"","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-11,11],"tickmode":"array","ticktext":["-10","-5","0","5","10"],"tickvals":[-10,-5,0,5,10],"categoryorder":"array","categoryarray":["-10","-5","0","5","10"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Offensive RAPTOR rating","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-11,11],"tickmode":"array","ticktext":["-10","-5","0","5","10"],"tickvals":[-10,-5,0,5,10],"categoryorder":"array","categoryarray":["-10","-5","0","5","10"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Defensive RAPTOR rating","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"b4234ae724f":{"x":{},"y":{},"xmin":{},"xmax":{},"ymin":{},"ymax":{},"type":"scatter"},"b4228d2bb8e":{"x":{},"y":{},"xmin":{},"xmax":{},"ymin":{},"ymax":{}},"b4223177c92":{"x":{},"y":{}},"b425af3673d":{"x":{},"y":{}},"b4221ff0471":{"x":{},"y":{}},"b426d7ca826":{"x":{},"y":{}},"b4213038ef2":{"x":{},"y":{}},"b424e9dbb9e":{"x":{},"y":{}},"b425588aa64":{"x":{},"y":{}},"b427f6ab71a":{"x":{},"y":{}},"b42371b4d50":{"x":{},"y":{}}},"cur_data":"b4234ae724f","visdat":{"b4234ae724f":["function (y) ","x"],"b4228d2bb8e":["function (y) ","x"],"b4223177c92":["function (y) ","x"],"b425af3673d":["function (y) ","x"],"b4221ff0471":["function (y) ","x"],"b426d7ca826":["function (y) ","x"],"b4213038ef2":["function (y) ","x"],"b424e9dbb9e":["function (y) ","x"],"b425588aa64":["function (y) ","x"],"b427f6ab71a":["function (y) ","x"],"b42371b4d50":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="key-resources" class="level2">
+<h2 class="anchored" data-anchor-id="key-resources">Key Resources</h2>
+<ul>
+<li><p>For editing scatter plot dot shapes and colors, and for editing grid lines I turned to <a href="https://ggplot2.tidyverse.org" class="uri">https://ggplot2.tidyverse.org</a></p></li>
+<li><p>Coloring different areas of the background I used <a href="https://statisticsglobe.com/draw-ggplot2-plot-different-background-colors-region-r" class="uri">https://statisticsglobe.com/draw-ggplot2-plot-different-background-colors-region-r</a></p></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
