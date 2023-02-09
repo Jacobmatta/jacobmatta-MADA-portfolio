@@ -107,7 +107,7 @@ g3 <- g2 + theme(panel.grid.minor = element_blank()) +  annotate(geom="label", x
 g3
 ```
 
-##  Reflection
+## Reflection
 
 The overall process was pretty fun and pushed me to explore the capabilities of ggplot2 functions. I would give myself a solid 85/100 for the end result. The colors of my plot do not exactly match the colors used in the FiveThirtyEight plot. Also, I struggled to make my plot interactive using ggplotly. When I attempted to use ggplotly, the background of my plot was lost. I am sure there is a simple solution to this that I will look into in the near future. Below is an example of using the ggplotly function and the background of the scatter plot disappearing. In addition, I would like to figure out how to edit the interactive dots on the scatter plot to present the player name when selected on.
 
