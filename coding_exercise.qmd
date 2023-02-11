@@ -10,33 +10,37 @@ editor:
 
 #### Install the dslabs package to look at and play with some data
 
-install.packages("dslabs")
-
-library("dslabs")
+```{r}
+library(dslabs)
+library(here)
+library(ggplot2)
+```
 
 #### Loading tidyverse for data processing
 
-install.packages("tidyverse"
-
-library("tidyverse")
+```{r}
+library(tidyverse)
+```
 
 #### Lets look at the gapminder dataset from dslabs by using the help() function
 
 -   Note: the help() function is used to pull the help page for the data
     to see what it contains
 
+```{r}
 help(gapminder)
+```
 
 #### Now lets use the str(), summary() and class() functions to further look at this data
 
 -   Note: The class function is used to check what time of object
     gapminder is
 
+```{r}
 str(gapminder)
-
 summary(gapminder)
-
 class(gapminder)
+```
 
 #### Assigning gapminder dataframe to a new object called gapminder
 
@@ -44,7 +48,9 @@ class(gapminder)
     will see gapminder show up in the environment window of RStudio
     which will allow easier viewing of the dataset
 
-gapminder \<- gapminder
+```{r}
+gapminder <- gapminder
+```
 
 #### Write code that assigns only the African countries to a new object/variable
 
@@ -52,18 +58,22 @@ gapminder \<- gapminder
     a new object called africadata which should have 2907 observations
     (obs) and 9 variables
 
-africadata \<- dplyr::filter(gapminder, continent %in% c("Africa"))
+```{r}
+africadata <- dplyr::filter(gapminder, continent %in% c("Africa"))
+```
 
 #### Running summary on africadata
 
+```{r}
 summary(africadata)
+```
 
 #### Creating an object that contains only the infant mortality and life expectancy data
 
 -   Note: To do that I will remove every column or variable that is not
     infant mortality or life expectancy
 
--   Note: The -c in the code blow, indicates columns being dropped \#
+-   Note: The -c in the code blow, indicates columns being dropped
 
 -   Note: Brackets \[\] are used to indicate the position of items in
     the dataframe
@@ -71,12 +81,16 @@ summary(africadata)
 -   Note: Left of the comma indicates the rows and right of the comma
     indicated columns
 
-infant_mortality_and_life_expectancy \<- africadata\[,-c(1:2,5:9)\]
+```{r}
+infant_mortality_and_life_expectancy <- africadata[,-c(1:2,5:9)]
+```
 
 #### Summary of infant_mortality_and_life_expectancy object created
 
+```{r}
 summary(infant_mortality_and_life_expectancy)
 str(infant_mortality_and_life_expectancy)
+```
 
 #### Creating an object that contains only population and life expectancy data
 
@@ -85,99 +99,136 @@ str(infant_mortality_and_life_expectancy)
     a different object name and different columns are being extracted to
     produce a dataset with just population and life expectancy
 
-population_and_life_expectancy \<- africadata\[,-c(1:3,5,7:9)\]
+```{r}
+population_and_life_expectancy <- africadata[,-c(1:3,5,7:9)]
+```
 
 #### Summary of population_and_life_expectancy
 
+```{r}
 summary(population_and_life_expectancy)
 str(population_and_life_expectancy)
+```
 
 #### Generating plot for life expectancy as a function of infant mortality
 
-life_infant_plot \<- infant_mortality_and_life_expectancy %\>%
+```{r}
+
+life_infant_plot <- infant_mortality_and_life_expectancy %>%
 
 ggplot(aes(x=infant_mortality, y=life_expectancy)) + geom_point() +
 geom_smooth(method='lm')
 
-plot(life_infant_plot) figure_file =
+plot(life_infant_plot) 
 
-here("coding_excercise_figures","life_infant_plot.png")
+figure_file = here("coding_excercise_figures","life_infant_plot.png")
 
 ggsave(filename = figure_file, plot=life_infant_plot)
 
+```
+
 #### Generating plot for life expectancy as a function of population size
 
-life_population_plot \<- population_and_life_expectancy %\>%
-ggplot(aes(x=population, y=life_expectancy)) + geom_point() +
-geom_smooth(method='lm') plot(life_infant_plot)
+```{r}
+life_population_plot <- population_and_life_expectancy %>%
 
-Note: adding a log scale for population using scale_x\_log10()
+  ggplot(aes(x=population, y=life_expectancy)) + geom_point() +
+geom_smooth(method='lm') 
 
-life_population_plot + scale_x\_log10() #saving plot to
-"coding_excercise_figures" file figure_file =
-here("coding_excercise_figures","life_population_plot.png")
+plot(life_infant_plot)
+
+#Note: adding a log scale for population using scale_x_log10()
+
+life_population_plot + scale_x_log10() #saving plot to"coding_excercise_figures"
+
+figure_file=here("coding_excercise_figures","life_population_plot.png")
 ggsave(filename = figure_file, plot=life_population_plot)
+```
 
 #### Extracting only the year 2000
 
-Year_2000 \<- africadata\[africadata\$year == '2000',\]
+```{r}
+Year_2000 <- africadata[africadata$year == '2000',]
 
-**Generating object for infant mortality and life expectancy during the
-year 2000**
+#Generating object for infant mortality and life expectancy during the year 2000
 
-infant_mortality_and_life_expectancy_2000 \<- Year_2000\[,-c(1:2,5:9)\]
+infant_mortality_and_life_expectancy_2000 <- Year_2000[,-c(1:2,5:9)]
+```
 
-**Summary of infant_mortality_and_life_expectancy**
+###Summary of infant_mortality_and_life_expectancy
 
+```{r}
 summary(infant_mortality_and_life_expectancy_2000)
 str(infant_mortality_and_life_expectancy_2000)
+```
 
 #### Creating an object that contains only population and life expectancy data
 
-population_and_life_expectancy_2000 \<- Year_2000\[,-c(1:3,5,7:9)\]
+```{r}
+population_and_life_expectancy_2000 <- Year_2000[,-c(1:3,5,7:9)]
+```
 
-**Summary of population_and_life_expectancy**
+###Summary of population_and_life_expectancy
 
+```{r}
 summary(population_and_life_expectancy_2000)
 str(population_and_life_expectancy_2000)
+```
 
 #### Plots for life expectancy as a function of infant mortality and life expectancy as a function of population size but only for the year 2000
 
-life_infant_2000_plot \<- infant_mortality_and_life_expectancy_2000 %\>%
+```{r}
+life_infant_2000_plot <- infant_mortality_and_life_expectancy_2000 %>%
 ggplot(aes(x=infant_mortality, y=life_expectancy)) + geom_point() +
-geom_smooth(method='lm') plot(life_infant_plot) figure_file =
-here("coding_excercise_figures","life_infant_2000_plot.png")
+geom_smooth(method='lm') 
+
+plot(life_infant_plot) 
+
+figure_file =here("coding_excercise_figures","life_infant_2000_plot.png")
 ggsave(filename = figure_file, plot=life_infant_2000_plot)
+```
 
 **Generating plot for life expectancy as a function of population size**
 
-life_population_2000_plot \<- population_and_life_expectancy_2000 %\>%
-ggplot(aes(x=population, y=life_expectancy)) + geom_point() +
-geom_smooth(method='lm') plot(life_population_2000_plot) #adding a log
-scale for population life_population_2000_plot + scale_x\_log10()
+```{r}
+life_population_2000_plot <- population_and_life_expectancy_2000 %>%
+
+  ggplot(aes(x=population, y=life_expectancy)) + geom_point() +
+geom_smooth(method='lm') 
+
+plot(life_population_2000_plot) 
+
+life_population_2000_plot <- life_population_2000_plot + scale_x_log10()
+```
+
 #saving plot to "coding_excercise_figures" file figure_file =
+
+```{r}
 here("coding_excercise_figures","life_population_2000_plot.png")
 ggsave(filename = figure_file, plot=life_population_2000_plot)
 
-**Using the lm() function to fit life expectancy as outcome and infant
-mortality as the predictor. Then using the lm() function to fit life
-expectancy as outcome and population as the predictor**
+#Using the lm() function to fit life expectancy as outcome and infant
+#mortality as the predictor. Then using the lm() function to fit life
+#expectancy as outcome and population as the predictor
 
-fit1 \<- lm(life_expectancy \~ infant_mortality,
+fit1 <- lm(life_expectancy ~ infant_mortality,
 data=infant_mortality_and_life_expectancy_2000)
 
-fit2 \<- lm(life_expectancy \~ population,
+fit2 <- lm(life_expectancy ~ population,
 data=population_and_life_expectancy_2000)
+```
 
 #### Applying the summary command to both fits which will print various fit results
 
+```{r}
 summary(fit1)
-
 summary(fit2)
+```
 
+## 
 
-## ## 
 ### Deanna Lanier Additions
+
 ```{r}
 library(tidyverse)
 library(dslabs)
@@ -192,13 +243,13 @@ ggplot(africaData, aes(x=log(population), y=life_expectancy, col=region)) + geom
   theme_bw()
 ```
 
-
 ```{r}
 #Plot Infant Mortality and Year colored by region 
 ggplot(africaData, aes(x=year, y=infant_mortality, col=region)) + geom_point() +xlab("year")+ ylab("infant_mortality")+
   theme_bw()
 
 ```
+
 ```{r}
 # linear model year and fertility 
 lm1=lm(year~infant_mortality, data=africaData)
@@ -215,6 +266,7 @@ y2000 = africaData [ which(africaData$year=="2000"), ]
 ggplot(y2000, aes(x=log(population), y=fertility, col=region)) + geom_point() +xlab("Population (log)")+ ylab("Fertility")+
   theme_bw()
 ```
-No clear relationship between population and fertility observed 
+
+No clear relationship between population and fertility observed
 
 **End of Deanna Lanier additions**

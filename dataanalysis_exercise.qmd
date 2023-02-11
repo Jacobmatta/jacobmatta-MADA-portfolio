@@ -5,7 +5,7 @@ output:
       toc: FALSE
 ---
 
-### Description of data
+##Description of data
 
 The data I chose for this exercise is data from the CDC that contains the funds the CDC received from the federal government in a form of five different congressional acts: the Corona virus Preparedness and Response Supplemental Appropriations Act, 2020; Corona virus Aid, Relief, and Economic Security Act; Paycheck Protection Program and Health Care Enhancement Act; Corona virus Response and Relief Supplemental Appropriations Act, 2021; and American Rescue Plan Act of 2021.
 
@@ -42,7 +42,7 @@ skimr::skim(rawdata)
 
 Clean Data
 
--    the only variable that appears to have a lot of missing values is Sub-jurisdiction.
+-   the only variable that appears to have a lot of missing values is Sub-jurisdiction.
 
 -   I am going to extract the observations that have missing sub-jurisdictions.
 
@@ -52,7 +52,7 @@ df1 <- stats::na.omit(rawdata)
 
 Clean Data Further
 
--    There are some funding amounts that are \$0.
+-   There are some funding amounts that are \$0.
 
 -   I am only interested in funding that is over \$0.
 
