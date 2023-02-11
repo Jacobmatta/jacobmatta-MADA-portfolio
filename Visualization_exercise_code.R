@@ -41,3 +41,21 @@ g3 <- g2 + theme(panel.grid.minor = element_blank()) +  annotate(geom="label", x
   annotate(geom="label", x=9,y=-10,label="- defensive", fill='pink')
 g3
 
+#with changes 
+g3 <- g2 + theme(panel.background=element_rect(fill="#FFFFFF"),  
+                 panel.grid.major=element_line(color="lightgrey"),
+                 axis.ticks=element_blank ( ), panel.grid.minor = element_blank()) +
+  
+  annotate(geom="label", x=-7.5,y=9,label="- offensive", fill="pink", size = 3) +
+  annotate(geom="label", x=-7.5,y=7.5,label="+ defensive", fill='turquoise', size = 3) +
+  annotate(geom="label", x=-7.5,y=-9,label="- defensive", fill='pink', size = 3) +
+  annotate(geom="label", x=-7.5,y=-7.5,label="- offensive", fill='pink', size = 3) + 
+  annotate(geom="label", x=7.5,y=9,label="+ offensive", fill='turquoise', size = 3) +
+  annotate(geom="label", x=7.5,y=7.5,label="+ defensive", fill='turquoise', size = 3) +
+  annotate(geom="label", x=9,y=-8,label="+ offensive", fill='turquoise', size = 3) +
+  annotate(geom="label", x=9,y=-10,label="- defensive", fill='pink', size = 3)
+
+g3
+
+
+

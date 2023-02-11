@@ -83,7 +83,7 @@ g1 <-
   ggplot(clean_data, aes(x=raptor_offense, y=raptor_defense)) +
   geom_rect(aes(xmin=-10,xmax=0,ymin=-10,ymax=0),fill="pink",alpha=0.01) +
   geom_rect(aes(xmin=0,xmax=10,ymin=0,ymax=10),fill='turquoise',alpha=0.01) +
-  labs(x = "Offensive RAPTOR rating", y = "Defensive RAPTOR rating")
+  labs(x = "Offensive RAPTOR rating", y = "Defensive RAPTOR rating")+ coord_fixed(ratio=1, xlim=c(-10,10),ylim=c(-10,10))
 
 g1
 ```
@@ -96,7 +96,9 @@ g2
 
 ```{r}
 #Adding annoations to the background
-g3 <- g2 + theme(panel.grid.minor = element_blank()) +  annotate(geom="label", x=-9,y=10,label="- offensive", fill="pink") +
+g3 <- g2 + theme(panel.grid.minor = element_blank()) +  
+  
+  annotate(geom="label", x=-9,y=10,label="- offensive", fill="pink") +
   annotate(geom="label", x=-9,y=8,label="+ defensive", fill='turquoise') +
   annotate(geom="label", x=-9,y=-10,label="- defensive", fill='pink') +
   annotate(geom="label", x=-9,y=-8,label="- offensive", fill='pink') + 
