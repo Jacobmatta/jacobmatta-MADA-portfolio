@@ -20,7 +20,7 @@ website:
             href: ./dataanalysis_exercise.html
     right:
       - icon: github 
-        href: URL-TO-THIS-REPOSITORY-HERE        
+        href: https://github.com/Jacobmatta/jacobmatta-MADA-portfolio/        
 
 format:
   html:
