@@ -90,22 +90,24 @@ g1
 
 ```{r}
 #adding data points that have been shaped and colored to match the FiveThirtyEight plot#
-g2 <- g1 + geom_point(shape = 21, colour = "black", fill = "white", size = 4, stroke = 1 ) + xlim(-10,10) + ylim(-10,10)
+g2 <- g1 + geom_point(shape = 21, colour = "black", fill = "white", size = 3, stroke = 0.5 ) + xlim(-10,10) + ylim(-10,10)
 g2
 ```
 
 ```{r}
 #Adding annoations to the background
-g3 <- g2 + theme(panel.grid.minor = element_blank()) +  
+g3 <- g2 + theme(panel.background=element_rect(fill="#FFFFFF"),  
+                 panel.grid.major=element_line(color="lightgrey"),
+                 axis.ticks=element_blank ( ), panel.grid.minor = element_blank()) +
   
-  annotate(geom="label", x=-9,y=10,label="- offensive", fill="pink") +
-  annotate(geom="label", x=-9,y=8,label="+ defensive", fill='turquoise') +
-  annotate(geom="label", x=-9,y=-10,label="- defensive", fill='pink') +
-  annotate(geom="label", x=-9,y=-8,label="- offensive", fill='pink') + 
-  annotate(geom="label", x=9,y=10,label="+ offensive", fill='turquoise') +
-  annotate(geom="label", x=9,y=8,label="+ defensive", fill='turquoise') +
-  annotate(geom="label", x=9,y=-8,label="+ offensive", fill='turquoise') +
-  annotate(geom="label", x=9,y=-10,label="- defensive", fill='pink')
+  annotate(geom="label", x=-7.5,y=9,label="- offensive", fill="pink", size = 3) +annotate(geom="label", x=-7.5,y=7.5,label="+ defensive", fill='turquoise', size = 3) +
+  annotate(geom="label", x=-7.5,y=-9,label="- defensive", fill='pink', size = 3) +
+  annotate(geom="label", x=-7.5,y=-7.5,label="- offensive", fill='pink', size = 3) + 
+  annotate(geom="label", x=7.5,y=9,label="+ offensive", fill='turquoise', size = 3) +
+  annotate(geom="label", x=7.5,y=7.5,label="+ defensive", fill='turquoise', size = 3) +
+  annotate(geom="label", x=7.5,y=-7.5,label="+ offensive", fill='turquoise', size = 3) +
+  annotate(geom="label", x=7.5,y=-9,label="- defensive", fill='pink', size = 3)
+
 g3
 ```
 

@@ -31,16 +31,6 @@ g1 <- ggplot(clean_data, aes(x=raptor_offense, y=raptor_defense)) +
 
 g2 <- g1 + geom_point(shape = 21, colour = "black", fill = "white", size = 4, stroke = 1 ) + xlim(-10,10) + ylim(-10,10)
 
-g3 <- g2 + theme(panel.grid.minor = element_blank()) +  annotate(geom="label", x=-9,y=10,label="- offensive", fill="pink") +
-  annotate(geom="label", x=-9,y=8,label="+ defensive", fill='turquoise') +
-  annotate(geom="label", x=-9,y=-10,label="- defensive", fill='pink') +
-  annotate(geom="label", x=-9,y=-8,label="- offensive", fill='pink') + 
-  annotate(geom="label", x=9,y=10,label="+ offensive", fill='turquoise') +
-  annotate(geom="label", x=9,y=8,label="+ defensive", fill='turquoise') +
-  annotate(geom="label", x=9,y=-8,label="+ offensive", fill='turquoise') +
-  annotate(geom="label", x=9,y=-10,label="- defensive", fill='pink')
-g3
-
 #with changes 
 g3 <- g2 + theme(panel.background=element_rect(fill="#FFFFFF"),  
                  panel.grid.major=element_line(color="lightgrey"),
@@ -52,10 +42,14 @@ g3 <- g2 + theme(panel.background=element_rect(fill="#FFFFFF"),
   annotate(geom="label", x=-7.5,y=-7.5,label="- offensive", fill='pink', size = 3) + 
   annotate(geom="label", x=7.5,y=9,label="+ offensive", fill='turquoise', size = 3) +
   annotate(geom="label", x=7.5,y=7.5,label="+ defensive", fill='turquoise', size = 3) +
-  annotate(geom="label", x=9,y=-8,label="+ offensive", fill='turquoise', size = 3) +
-  annotate(geom="label", x=9,y=-10,label="- defensive", fill='pink', size = 3)
+  annotate(geom="label", x=7.5,y=-7.5,label="+ offensive", fill='turquoise', size = 3) +
+  annotate(geom="label", x=7.5,y=-9,label="- defensive", fill='pink', size = 3)
 
 g3
 
+#attempting to edit tooltip to only contain player name
+ggplotly(g3, hoverlabel = "player_name")
 
-
+ggplotly(data = g3, hoverinfo= "text", text = paste("NBA Player: ", clean_data$player_name))
+  
+  
