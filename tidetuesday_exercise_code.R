@@ -5,103 +5,93 @@ install.packages("janitor")
 library(tidytuesdayR)
 library(tidyverse)
 library(here)
-library(janitor)
+library(Hmisc)
+library(ggplot2)
+library(plotly)
 # Get the Data
 # Either ISO-8601 date or year/week works!
+age_gaps <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-14/age_gaps.csv')
 
-tuesdata <- tidytuesdayR::tt_load('2023-02-14')
-tuesdata <- tidytuesdayR::tt_load(2023, week = 7)
-
-age_gaps <- tuesdata$age_gaps
-
-#cleaning script 
-clean_names(age_gaps)
+#looking at data 
 glimpse(age_gaps)
 
-# Quickly check that the columns make sense.
-length(vctrs::vec_cast(age_gaps$release_year, integer())) == nrow(age_gaps)
-length(vctrs::vec_cast(age_gaps$age_difference, integer())) == nrow(age_gaps)
-unique(age_gaps$actor_1_gender)
-!any(is.na(as.Date(age_gaps$actor_1_birthdate)))
-length(vctrs::vec_cast(age_gaps$actor_1_age, integer())) == nrow(age_gaps)
-unique(age_gaps$actor_2_gender)
-!any(is.na(as.Date(age_gaps$actor_2_birthdate)))
-length(vctrs::vec_cast(age_gaps$actor_2_age, integer())) == nrow(age_gaps)
+########################################### 
+#changing the variable names for the older and younger characters just so it's easy to remember which is which
 
-# Formally set the dates to dates.
-age_gaps <- age_gaps |> 
-  mutate(
-    across(
-      ends_with("birthdate"),
-      as.Date
-    )
-  )
+#changing actor gender
+age_gaps <- age_gaps %>% 
+  rename(older_actor_gender = character_1_gender)
 
-# Try to get a better understanding of the "gender" columns.
-count(age_gaps, actor_1_gender)
-count(age_gaps, actor_2_gender)
+age_gaps <- age_gaps %>% 
+  rename(younger_actor_gender = character_2_gender)
 
-# The order of the characters doesn't seem to be consistent
-age_gaps |> 
-  summarize(
-    p_1_older = mean(actor_1_age > actor_2_age),
-    p_1_male = mean(actor_1_gender == "man"),
-    p_1_female_2_male = mean(actor_1_gender == "woman" & actor_2_gender == "man"),
-    p_1_first_alpha = mean(actor_1_name < actor_2_name)
-  )
 
-# For the most part, they put the man first if there's a man in the couple. It
-# doesn't look like there's a strict rule, though. But beware: Some movies have
-# more than 1 couple! Let's use all that to rebuild the data, always putting the
-# older character first.
-age_gaps <- age_gaps |> 
-  mutate(
-    couple_number = row_number(),
-    .by = "movie_name"
-  ) |> 
-  pivot_longer(
-    cols = starts_with(c("actor_1_", "actor_2_")),
-    names_to = c(NA, NA, ".value"),
-    names_sep = "_"
-  ) |> 
-  # Put the older actor first.
-  arrange(desc(age_difference), movie_name, birthdate) |> 
-  # While we have it pivoted, correct Elliot Page's name. I don't know if other
-  # actors are similarly deadnamed, but at least we can fix this one. Note that
-  # the *characters* played by Elliot in these particular films were women, so
-  # I'll leave the gender as-is.
-  mutate(
-    name = case_match(
-      name,
-      "Ellen Page" ~ "Elliot Page",
-      .default = name
-    )
-  ) |>
-  mutate(
-    position = row_number(),
-    .by = c("movie_name", "couple_number")
-  ) |> 
-  pivot_wider(
-    names_from = "position",
-    names_glue = "actor_{position}_{.value}",
-    values_from = c("name", "gender", "birthdate", "age")
-  )
+#changing actor name variable name 
+age_gaps <- age_gaps %>% 
+  rename(older_actor_name = actor_1_name)
+age_gaps <- age_gaps %>% 
+  rename(younger_actor_name = actor_2_name)
+#changing birthday actor name 
+age_gaps <- age_gaps %>% 
+  rename(older_actor_birthdate = actor_1_birthdate)
+age_gaps <- age_gaps %>% 
+  rename(younger_actor_birthdate = actor_2_birthdate)
+#changing actor age
+age_gaps <- age_gaps %>% 
+  rename(older_actor_age = actor_1_age)
+age_gaps <- age_gaps %>% 
+  rename(younger_actor_age = actor_2_age)
 
-# The gender isn't really the actor so much as it is the character. Let's
-# correct that.
-age_gaps <- age_gaps |> 
-  rename(
-    "character_1_gender" = "actor_1_gender",
-    "character_2_gender" = "actor_2_gender"
-  )
+#using the describe function from the Hmisc package to see how many of the observations in the character_1_gender variable are man and woman 
+describe(age_gaps$older_actor_gender)
 
-glimpse(age_gaps)
+#producing tibble with older actor variable 
+freq_older_char <- age_gaps %>%
+  group_by(older_actor_gender) %>%
+  summarise(counts = n())
+freq_older_char
 
-# Save the data.
-write_csv(
-  age_gaps,
-  here::here(
-    "data", "2023", "2023-02-14",
-    "age_gaps.csv"
-  )
-)
+#producing plot for man vs woman that play the older character 
+older_plot = ggplot(freq_older_char, aes(x = older_actor_gender, y = counts)) +
+  geom_bar(fill = "#0073C2FF", stat = "identity") +
+  geom_text(aes(label = counts), vjust = -0.3) + ggtitle("Count of older men characters vs older women characters")
+older_plot
+
+#describing the younger_actor_gender variable: count of man and woman characters who are younger 
+#producing tibble with frequencies of younger actor variable 
+describe(age_gaps$younger_actor_gender)
+
+freq_younger_char <- age_gaps %>%
+  group_by(younger_actor_gender) %>%
+  summarise(counts = n())
+freq_younger_char
+
+#producing plot for man vs woman that play the younger character 
+younger_plot = ggplot(freq_younger_char, aes(x = younger_actor_gender, y = counts)) +
+  geom_bar(fill = "red", stat = "identity") +
+  geom_text(aes(label = counts), vjust = -0.3) + ggtitle("Count of younger men characters vs younger women characters")
+younger_plot
+
+#in the movies included in the data it is a more common for a male actor to play the older character when compared to women playing the older character 
+
+#with that in mind, I am curious if there is any relationship between movies with an older man character and the release date of the movie 
+
+#creating data set with just men who are the older character
+year_vs_oldergender <- age_gaps %>% group_by(release_year, older_actor_gender)
+year_vs_oldergender <-year_vs_oldergender %>% summarise(n = n())
+
+#comparing the numbers of older men characters by year 
+year_vs_oldermen = filter(year_vs_oldergender, older_actor_gender == "man")
+
+#removing the gender column because they are all male 
+year_vs_oldermen <- year_vs_oldermen[,-2]
+
+plot_oldermen_byyear = ggplot(year_vs_oldermen, aes(x=release_year, y=n)) + 
+  geom_bar(stat = "identity") + ggtitle("Count of older men characters by year")
+plot_oldermen_byyear
+
+#creating an interactive bar plot using ggplotly
+interactive_plot = ggplotly(plot_oldermen_byyear)
+interactive_plot
+
+#cool, the trend of older men playing the lover in movies really started to pick up in the early to mid 90's
