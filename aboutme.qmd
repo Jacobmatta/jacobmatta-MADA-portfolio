@@ -5,7 +5,7 @@ output:
       toc: FALSE
 ---
 
-![](headshot.jpeg){width="288"}
+![](headshot.jpeg){width="200"}
 
 ## Background
 
