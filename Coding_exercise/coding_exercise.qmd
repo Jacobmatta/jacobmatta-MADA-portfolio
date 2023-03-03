@@ -113,7 +113,6 @@ str(population_and_life_expectancy)
 #### Generating plot for life expectancy as a function of infant mortality
 
 ```{r}
-
 life_infant_plot <- infant_mortality_and_life_expectancy %>%
 
 ggplot(aes(x=infant_mortality, y=life_expectancy)) + geom_point() +
@@ -121,7 +120,7 @@ geom_smooth(method='lm')
 
 plot(life_infant_plot) 
 
-figure_file = here("coding_excercise_figures","life_infant_plot.png")
+figure_file = here("Coding_exercise", "coding_excercise_figures","life_infant_plot.png")
 
 ggsave(filename = figure_file, plot=life_infant_plot)
 
@@ -141,7 +140,7 @@ plot(life_infant_plot)
 
 life_population_plot + scale_x_log10() #saving plot to"coding_excercise_figures"
 
-figure_file=here("coding_excercise_figures","life_population_plot.png")
+figure_file=here("Coding_exercise","coding_excercise_figures","life_population_plot.png")
 ggsave(filename = figure_file, plot=life_population_plot)
 ```
 
@@ -184,7 +183,7 @@ geom_smooth(method='lm')
 
 plot(life_infant_plot) 
 
-figure_file =here("coding_excercise_figures","life_infant_2000_plot.png")
+figure_file =here("Coding_exercise","coding_excercise_figures","life_infant_2000_plot.png")
 ggsave(filename = figure_file, plot=life_infant_2000_plot)
 ```
 

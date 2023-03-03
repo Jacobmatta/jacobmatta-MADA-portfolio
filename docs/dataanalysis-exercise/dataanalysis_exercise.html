@@ -164,7 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">Tidy Tuesday Exercise</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href=".././data analysis_exercise.html">
+    <a class="dropdown-item" href=".././dataanalysis_exercise.html">
  <span class="dropdown-text">R Data Analysis Exercise</span></a>
   </li>  
     </ul>
@@ -172,7 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../URL-TO-THIS-REPOSITORY-HERE"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Jacobmatta/jacobmatta-MADA-portfolio/"><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -207,10 +207,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="description-of-data" class="level3">
-<h3 class="anchored" data-anchor-id="description-of-data">Description of data</h3>
+<p>##Description of data</p>
 <p>The data I chose for this exercise is data from the CDC that contains the funds the CDC received from the federal government in a form of five different congressional acts: the Corona virus Preparedness and Response Supplemental Appropriations Act, 2020; Corona virus Aid, Relief, and Economic Security Act; Paycheck Protection Program and Health Care Enhancement Act; Corona virus Response and Relief Supplemental Appropriations Act, 2021; and American Rescue Plan Act of 2021.</p>
-<p>###Loadpackages</p>
+<p>Load packages</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="co">#for loading csv files</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co">#for data processing/cleaning</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -235,7 +234,11 @@ Attaching package: 'dplyr'</code></pre>
 <pre><code>here() starts at /Users/jacobmatta/Documents/R/jacobmatta-MADA-portfolio</code></pre>
 </div>
 </div>
-<p>###Loaddata #note the use of the here() package and not absolute paths #notice here::here is to indicate package::function()</p>
+<p>Load data</p>
+<ul>
+<li><p>Note the use of the here() package and not absolute paths</p></li>
+<li><p>Notice here::here is to indicate package::function()</p></li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataanalysis-exercise"</span>, <span class="st">"data"</span>,<span class="st">"raw data"</span>,</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"CDC_COVID_State_Funding.csv"</span>)</span>
@@ -251,7 +254,7 @@ dbl (1): Amount
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div>
-<p>###explore the data</p>
+<p>Explore the Data</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(rawdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -462,31 +465,55 @@ $ Amount                  &lt;dbl&gt; 288995531, 518135, 14786285, 2346310, 2769
 </table>
 </div>
 </div>
-<p>###cleandata1 #the only variable that appears to have a lot of missing values is Sub-jurisdiction. #I am going to extract the observations that have missing sub-jurisdictions.</p>
+<p>Clean Data</p>
+<ul>
+<li><p>the only variable that appears to have a lot of missing values is Sub-jurisdiction.</p></li>
+<li><p>I am going to extract the observations that have missing sub-jurisdictions.</p></li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">na.omit</span>(rawdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>###cleandata2 #there are some funding amounts that are $0. #I am only interested in funding that is over $0. #to clean this up I will remove all the rows containing $0.</p>
+<p>Clean Data Further</p>
+<ul>
+<li><p>There are some funding amounts that are $0.</p></li>
+<li><p>I am only interested in funding that is over $0.</p></li>
+<li><p>To clean this up I will remove all the rows containing $0.</p></li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(Amount <span class="sc">!=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>###cleandata3 #I am only interested in the supplemental act name. #the following code will remove the topical area column and the award name column.</p>
+<p>Clean Data3 Even Further</p>
+<ul>
+<li>I am only interested in the supplemental act name. The following code will remove the topical area column and the award name column.</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(df2,<span class="sc">-</span><span class="fu">c</span>(<span class="st">"Topical Area"</span>, <span class="st">"Award Name"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>###Variables of interest #Interest which Jurisdition has the most funding (amount). #Also curious which supplemental act has the most funding.</p>
-<p>———————————————–Aidan Troha’s Edit——————————————– ####Additional Packages</p>
+<p>Variables of interest</p>
+<ul>
+<li><p>Interested in which Jurisdiction has the most funding (amount).</p></li>
+<li><p>Also curious which supplemental act has the most funding.</p></li>
+</ul>
+<p>———————————————–Aidan Troha’s Edit——————————————– Additional Packages</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>##selectingdata1 First, we summarise the data based on location (Jurisdiction). Also, we wish to convert the “Amount” column to one that can be easily readable by viewers.We can achieve this by using the “group-by”,“summarise”, and “mutate” functions.</p>
+<p>Selecting Data</p>
+<ul>
+<li><p>First, we summarize the data based on location (Jurisdiction).</p></li>
+<li><p>Also, we wish to convert the “Amount” column to one that can be easily readable by viewers.</p></li>
+<li><p>We can achieve this by using the group-by(), summarise(), and mutate() functions.</p></li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>test1 <span class="ot">&lt;-</span> df3 <span class="sc">%&gt;%</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(Jurisdiction) <span class="sc">%&gt;%</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">Funding =</span> <span class="fu">sum</span>(Amount)) <span class="sc">%&gt;%</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Funding (in Millions)</span><span class="st">`</span> <span class="ot">=</span> Funding<span class="sc">/</span><span class="dv">1000000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>##plotting1 We want to show the relationships between the state and the amount of funding received. Since there is such a disparity between the states with the most funding and the states with the least funding, I will only show the states with the highest level of funding.</p>
+<p>Plotting</p>
+<ul>
+<li>We want to show the relationships between the state and the amount of funding received. Since there is such a disparity between the states with the most funding and the states with the least funding, I will only show the states with the highest level of funding.</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>Jurisdiction,<span class="at">y=</span><span class="st">`</span><span class="at">Funding (in Millions)</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_col</span>(<span class="at">data=</span><span class="fu">slice_max</span>(test1,<span class="at">order_by=</span><span class="st">`</span><span class="at">Funding (in Millions)</span><span class="st">`</span>,<span class="at">n=</span><span class="dv">5</span>),</span>
@@ -498,14 +525,20 @@ $ Amount                  &lt;dbl&gt; 288995531, 518135, 14786285, 2346310, 2769
 <p><img src="dataanalysis_exercise_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>##selectingdata2 As before, we summarise the data, but this time, we group by “Supplemental Act Name”.</p>
+<p>Selecting data</p>
+<ul>
+<li>As before, we summarise the data, but this time, we group by “Supplemental Act Name”.</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>test2 <span class="ot">&lt;-</span> df3 <span class="sc">%&gt;%</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Supplemental Act Name</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Funding =</span> <span class="fu">sum</span>(Amount)) <span class="sc">%&gt;%</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Funding (in Millions)</span><span class="st">`</span> <span class="ot">=</span> Funding<span class="sc">/</span><span class="dv">1000000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>##plotting2 We want to show the relationships between the cumulative amount of funding donated by Supplemental Act.</p>
+<p>Plotting2</p>
+<ul>
+<li>We want to show the relationships between the cumulative amount of funding donated by Supplemental Act.</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>test2,<span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">Supplemental Act Name</span><span class="st">`</span>,</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y=</span><span class="st">`</span><span class="at">Funding (in Millions)</span><span class="st">`</span>)) <span class="sc">+</span></span>
@@ -519,7 +552,6 @@ $ Amount                  &lt;dbl&gt; 288995531, 518135, 14786285, 2346310, 2769
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

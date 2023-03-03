@@ -1,0 +1,58 @@
+---
+title: "Flu Analysis Wrangling Code"
+output:
+  html_document:
+    toc: FALSE
+---
+
+### Library for cleaning 
+```{r}
+library(tidyr)
+library(tidyselect)
+library(dplyr)
+library(here)
+```
+
+### Reading in the RDS file 
+```{r}
+#setwd is used to set the working directory to this project
+setwd("~/Documents/R/jacobmatta-MADA-portfolio")
+list.files()
+rawdata = readRDS("~/Documents/R/jacobmatta-MADA-portfolio/Fluanalysis_exercise/data/rawdata/SympAct_Any_Pos.Rda") 
+
+```
+
+### Removing select variables
+```{r}
+#Remove all variables that have Score or Total or FluA or FluB or Dxname or Activity in their name
+#the pipe operator (%>%) allows us to do this in neat fashion while using the contains function
+#the negatice sign (-) in front of contains indicates the name inside the parenthesis will be dropped 
+#from any variable that has that name 
+
+rawdata2 = rawdata %>% select(-contains("Score")) %>% 
+            select(-contains("Total")) %>% 
+            select(-contains("FluA")) %>% 
+            select(-contains("FluB")) %>%
+            select(-contains("Dxname")) %>%
+            select(-contains("Activity")) %>%
+            select(-contains("Unique.Visit"))
+
+```
+
+### Removing an NA values 
+```{r}
+rawdata3 = na.omit(rawdata2)
+```
+
+### Saving data as an RDS file
+```{r}
+#saving data as an RDS file in the cleandata folder as "cleandata.RDS"
+#used the here function to set the location to where I want to save the file 
+location = here("Fluanalysis_exercise", "data", "cleandata", "cleandata.RDS")
+```
+
+# See if it worked
+```{r}
+readRDS(location)
+```
+

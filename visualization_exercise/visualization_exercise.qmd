@@ -39,7 +39,7 @@ library(plotly)
 Loading the data
 
 ```{r}
-data_location <- here::here("data","raptor_by_nba_player.csv")
+data_location <- here::here("visualization_exercise","data","raptor_by_nba_player.csv")
 rawdata <- readr::read_csv(data_location)
 ```
 
