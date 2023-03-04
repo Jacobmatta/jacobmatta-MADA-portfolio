@@ -1,5 +1,5 @@
 ---
-title: "exploration"
+title: "Exploration"
 output:
   html_document:
     toc: FALSE
@@ -11,14 +11,21 @@ library(tidyverse)
 library(ggplot2)
 library(Hmisc) #needed for the describe() function
 library(dplyr)
+library(here) #for loading the data 
+```
+
+### Loading the clean data 
+```{r}
+location = here("Fluanalysis_exercise", "data", "cleandata", "cleandata.RDS")
+
+clean_data = readRDS(location)
 ```
 
 ### Getting a visual of the distribution of body temp
 ```{r}
-Bodytemp_plot = ggplot(rawdata3,aes(x=BodyTemp)) +
+Bodytemp_plot = ggplot(clean_data,aes(x=BodyTemp)) +
   geom_density(color="darkblue", fill="lightblue")
 Bodytemp_plot
-bodytemp_summary
 #there is a skew to the right with a mean at 98.94 
 ```
 
@@ -27,9 +34,9 @@ bodytemp_summary
 
 ```{r}
 #I chose to use the describe function because it provides count (n), and the frequency and proportion of response
-nausea_summary = describe(rawdata3$Nausea)
-lymph_summary = describe(rawdata3$SwollenLymphNodes)
-insomnia_summary = describe(rawdata3$Insomnia)
+nausea_summary = describe(clean_data$Nausea)
+lymph_summary = describe(clean_data$SwollenLymphNodes)
+insomnia_summary = describe(clean_data$Insomnia)
 ```
 
 # Checking out the summaries of the binary predictor variables 

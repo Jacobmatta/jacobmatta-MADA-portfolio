@@ -18,6 +18,14 @@ website:
             href: ./tidytuesday_exercise.html
           - text: "R Data Analysis Exercise"
             href: ./dataanalysis_exercise.html
+      - text: "Flu Analysis"
+        menu: 
+          - text: "Wrangling Code"
+            href: ./Fluanalysis_exercise/code/wrangling.html 
+          - text: "Exploration"
+            href: ./Fluanalysis_exercise/code/exploration.html 
+          - text: "Model Fitting"
+            href: ./Fluanalysis_exercise/code/Fitting.html
     right:
       - icon: github 
         href: https://github.com/Jacobmatta/jacobmatta-MADA-portfolio/        
