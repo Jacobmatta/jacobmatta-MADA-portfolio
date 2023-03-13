@@ -15,10 +15,9 @@ library(here)
 
 ### Reading in the RDS file 
 ```{r}
-#setwd is used to set the working directory to this project
-setwd("~/Documents/R/jacobmatta-MADA-portfolio")
-list.files()
-rawdata = readRDS("~/Documents/R/jacobmatta-MADA-portfolio/Fluanalysis_exercise/data/rawdata/SympAct_Any_Pos.Rda") 
+#reading in the RDS file 
+datalocation = here("Fluanalysis_exercise","data", "rawdata", "SympAct_Any_Pos.Rda")
+rawdata = readRDS(datalocation)
 
 ```
 
