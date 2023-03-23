@@ -1,6 +1,9 @@
 ---
 title: "Model Fitting"
 editor: visual
+output:
+  html_document:
+    toc: FALSE
 ---
 
 ### Model fitting library
@@ -20,6 +23,7 @@ clean_data = readRDS(location)
 ```
 
 ### Generating a simple linear regression model with the main predictor of interest, Runny Nose, with the outcome of interest, Body Temp, while following the [tidymodels procedure for linear regression](https://www.tidymodels.org/start/models/)
+
 ```{r}
 linear_reg() %>% 
   set_engine("lm") #setting the engine to "lm" for linear regression 
@@ -31,7 +35,8 @@ lm_fit = lm_mod %>%
 lm_fit = tidy(lm_fit) #using tidy to produce a tibble for the results of the model fitting 
 ```
 
-### Fitting bodytemp with all predictors of interest 
+### Fitting bodytemp with all predictors of interest
+
 ```{r}
 linear_reg() %>% 
   set_engine("lm")
@@ -44,15 +49,17 @@ lm_fit2 = lm_mod %>%
 lm_fit2= tidy(lm_fit2)
 ```
 
-### Comparing the results from simple linear regression between body weight and runny nose to multiple linear regression between body weight and other predictors of interest, Insomnia, Nausea and SwollenLymphNodes
+### Comparing the results from simple linear regression between body weight and runny nose to multiple linear regression between body weight and other predictors of interest, Insomnia, Nausea and Swollen Lymph Nodes
+
 ```{r}
 lm_fit 
 lm_fit2
 ```
 
-After comparing models, they seem to be quite similar. The y-intercept changes from 99.1431 to 99.12270 when going from the linear regression model to the multiple linear regression model. The slope coefficient of the outcome goes for the linear regression model is -0.2926, and for the multiple linear regression model it become -0.29217 which is almost the same slope. 
+After comparing models, they seem to be quite similar. The y-intercept changes from 99.1431 to 99.12270 when going from the linear regression model to the multiple linear regression model. The slope coefficient of the outcome goes for the linear regression model is -0.2926, and for the multiple linear regression model it become -0.29217 which is almost the same slope.
 
-### Logistic regression Nausea(outcome) vs Runny nose
+### Logistic regression Nausea (outcome) vs Runny nose
+
 ```{r}
 logistic_reg() %>% 
   set_engine("glm") #setting the engine to "glm" for "general linear model"
@@ -63,6 +70,7 @@ glm_fit = tidy(glm_fit)
 ```
 
 ### Multiple log regression including all predictors of interest
+
 ```{r}
 logistic_reg() %>% 
   set_engine("glm")
@@ -73,10 +81,10 @@ glm_fit2 = tidy(glm_fit2)
 ```
 
 ### Comparing the two logistic models
+
 ```{r}
 glm_fit
 glm_fit2
 ```
 
 After comparing logistic models, the slope of the logistic model just for Nausea as the outcome and runny nose as the predictor is 0.05018, while the slope for the logistic model for Nausea and multiple predictors is slightly less 0.02864. The y inercept for the simple logistic model is -0.65781 compared to -0.81100 for the multiple logistic model.
-
