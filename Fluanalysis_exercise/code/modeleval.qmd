@@ -5,7 +5,9 @@ output:
   html_document:
     toc: FALSE
 ---
-### Library 
+
+### Library
+
 ```{r}
 library(tidymodels)
 library(here)
@@ -15,15 +17,17 @@ library(yardstick)
 library(dplyr)
 ```
 
-### Loading the data 
+### Loading the data
+
 ```{r}
 location = here("Fluanalysis_exercise", "data", "cleandata", "cleandata.RDS")
 clean_data = readRDS(location)
 ```
 
-## Data Splitting 
+## Data Splitting
 
 ### We can use the rsample package to create an object that contains the information on how to split the data
+
 ```{r}
 # Fix the random numbers by setting the seed 
 # This enables the analysis to be reproducible when random numbers are used 
@@ -34,14 +38,16 @@ data_split = initial_split(clean_data, prop = 3/4)
 ```
 
 ### Create data frames for the two sets
+
 ```{r}
 train_data = training(data_split)
 test_data  = testing(data_split)
 ```
 
-## Creating a simple recipe that fits a logistic model to our categorical outcome of interest(Nausea), using all predictors. 
+## Creating a simple recipe that fits a logistic model to our categorical outcome of interest(Nausea), using all predictors.
 
-### Initiating a new recipe 
+### Initiating a new recipe
+
 ```{r}
 flu_rec <- 
   recipe(Nausea ~ ., data = train_data) # . indicates all predictors are present
@@ -49,6 +55,7 @@ flu_rec <-
 ```
 
 ### Set a model
+
 ```{r}
 lr_mod <- 
   logistic_reg() %>% 
@@ -56,6 +63,7 @@ lr_mod <-
 ```
 
 ### Using the workflow() function to create a simple workflow that fits a logistic model to all predictors using the glm engine
+
 ```{r}
 flu_wflow <- 
   workflow() %>% 
@@ -65,6 +73,7 @@ flu_wflow
 ```
 
 ### A single function that can be used to prepare the recipe and train the model from the resulting predictors
+
 ```{r}
 # fitting the model to the training data
 flu_fit1 <- 
@@ -78,7 +87,8 @@ flu_fit2 <-
 
 ```
 
-### Extracting the model or recipe objects from the workflow in order to view model coefficients 
+### Extracting the model or recipe objects from the workflow in order to view model coefficients
+
 ```{r}
 # Extracting coefficients for model fit to the training data
 flu_fit1 %>% 
@@ -92,6 +102,7 @@ flu_fit2 %>%
 ```
 
 ### Using augment() to predict the and save the predicted data with the dataset
+
 ```{r}
 flu_aug1 = augment(flu_fit1, train_data)
 
@@ -102,6 +113,7 @@ flu_aug2
 ```
 
 ### Creating an ROC curve and producing estimates under the curve for the training data for predicted class probability of No
+
 ```{r}
 flu_aug1 %>% 
   roc_curve(truth = Nausea, .pred_No)  %>% 
@@ -112,6 +124,7 @@ flu_aug1 %>%
 ```
 
 ### Creating an ROC curve and producing estimates under the curve for the test data for predicted class probability of No
+
 ```{r}
 flu_aug2 %>% 
   roc_curve(truth = Nausea, .pred_No)  %>% 
@@ -121,16 +134,17 @@ flu_aug2 %>%
   roc_auc(truth = Nausea, .pred_No)
 ```
 
-# Alternate Model 
+# Alternate Model
 
-### Setting up the recipe for a model between main predictor and categorical outcome 
+### Setting up the recipe for a model between main predictor and categorical outcome
+
 ```{r}
 flu2_rec <- 
   recipe(Nausea ~ RunnyNose, data = train_data) # . indicates all predictors are present
 ```
 
-
 ### Set a model
+
 ```{r}
 lr_mod2 <- 
   logistic_reg() %>% 
@@ -138,6 +152,7 @@ lr_mod2 <-
 ```
 
 ### Using the workflow() function to create a simple workflow that fits a logistic model to all predictors using the glm engine
+
 ```{r}
 flu_wflow2 <- 
   workflow() %>% 
@@ -147,6 +162,7 @@ flu_wflow2
 ```
 
 ### A single function that can be used to prepare the recipe and train the model from the resulting predictors
+
 ```{r}
 # fitting the model to the training data
 flu_fit3 <- 
@@ -160,7 +176,8 @@ flu_fit4 <-
 
 ```
 
-### Extracting the model or recipe objects from the workflow in order to view model coefficients 
+### Extracting the model or recipe objects from the workflow in order to view model coefficients
+
 ```{r}
 # Extracting coefficients for model fit to the training data
 flu_fit3 %>% 
@@ -174,6 +191,7 @@ flu_fit4 %>%
 ```
 
 ### Using augment() to predict the and save the predicted data with the dataset
+
 ```{r}
 flu_aug3 = augment(flu_fit3, train_data)
 
@@ -183,8 +201,8 @@ flu_aug3
 flu_aug4
 ```
 
+### Creating an ROC curve and producing estimates under the curve for the training data
 
-### Creating an ROC curve and producing estimates under the curve for the training data 
 ```{r}
 flu_aug3 %>% 
   roc_curve(truth = Nausea, .pred_No)  %>% 
@@ -194,8 +212,8 @@ flu_aug3 %>%
   roc_auc(truth = Nausea, .pred_No)
 ```
 
+### Creating an ROC curve and producing estimates under the curve for the test data
 
-### Creating an ROC curve and producing estimates under the curve for the test data 
 ```{r}
 flu_aug4 %>% 
   roc_curve(truth = Nausea, .pred_No)  %>% 
@@ -204,5 +222,3 @@ flu_aug4 %>%
 flu_aug4 %>% 
   roc_auc(truth = Nausea, .pred_No)
 ```
-
-

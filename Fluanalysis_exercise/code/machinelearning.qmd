@@ -1,0 +1,68 @@
+### Library
+
+```{r}
+library(tidymodels)
+library(here)
+library(rsample)
+library(parsnip) #building a model specification
+library(yardstick)
+library(dplyr)
+library(metrics)
+```
+
+
+### Loading the data
+
+```{r}
+location = here("Fluanalysis_exercise", "data", "cleandata", "cleandata.RDS")
+clean_data = readRDS(location)
+```
+
+### Setting a seed
+```{r}
+set.seed(123)
+```
+
+### Data splitting 
+```{r}
+data_split = initial_split(clean_data, prop = 7/10, strata = BodyTemp)
+```
+
+### Splitting the data between training and testing 
+```{r}
+train_data = training(data_split)
+test_data  = testing(data_split)
+```
+
+
+### Doing 5-fold cross validation with 5 repeats and body temperature as the strata
+```{r}
+CV_fold = vfold_cv(train_data, v = 5, repeats = 5, strata = BodyTemp)
+```
+
+### Creating a recipe and applying to the training data
+```{r}
+recipe <- recipe(BodyTemp ~ ., data = train_data) %>%
+  step_dummy(all_nominal(), one_hot = TRUE)
+
+training_fit <- prep(recipe) %>% 
+  bake(new_data = NULL, data = train_data)
+```
+
+### Creating a mean model and evaluating the model for both the training data and test data
+```{r}
+mean_model <- function(clean_data) {
+  outcome <- mean(clean_data$BodyTemp)
+  prediction <- rep(outcome, nrow(clean_data))
+  return(prediction)}
+
+#applying and evaluating model for training data
+train_pred <- mean_model(train_data)
+train_rmse <- sqrt(mean((train_data$BodyTemp - null_train_pred)^2))
+
+#applying and evaluating model for test data
+test_pred <- mean_model(test_data)
+test_rmse <- sqrt(mean((test_data$BodyTemp - null_test_pred)^2))
+```
+
+

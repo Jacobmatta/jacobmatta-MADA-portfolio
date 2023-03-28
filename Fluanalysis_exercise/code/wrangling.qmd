@@ -38,16 +38,64 @@ rawdata2 = rawdata %>% select(-contains("Score")) %>%
 
 ```
 
+
 ### Removing an NA values 
 ```{r}
 rawdata3 = na.omit(rawdata2)
 ```
+
+### Removing 'YN' versions of variables 
+```{r}
+#identifying variables that end with YN 
+YN_vars <- grep("YN$", names(rawdata3))
+
+#dropping variables that end with YN and then dropping the one variable that ends with YN2 by the column number of that variable 
+rawdata3 = rawdata3[, -YN_vars]
+rawdata3 = rawdata3[, -11]
+```
+
+### Filtering out binary predictors with <50 responses that are no and binary predictors with <50 responses that are yes
+```{r}
+#Finding which variables have less than 50 response of either yes or no ( there are two )
+# doing this by an eye test than using table() function in further investigate 
+table(rawdata3$Fatigue)
+#nope
+
+#Chillsweats
+table(rawdata3$ChillsSweats)
+#nope
+
+#vomit 
+table(rawdata3$Vomit)
+#no
+
+#vision 
+table(rawdata3$Vision)
+#yes 
+
+#toothpn
+table(rawdata3$ToothPn)
+#no
+
+#hearing 
+table(rawdata3$Hearing)
+#yes
+```
+
+### Removing ToothPn and Hearing by column position 
+```{r}
+rawdata3 = rawdata3[, -c(21, 24)]
+```
+
+
 
 ### Saving data as an RDS file
 ```{r}
 #saving data as an RDS file in the cleandata folder as "cleandata.RDS"
 #used the here function to set the location to where I want to save the file 
 location = here("Fluanalysis_exercise", "data", "cleandata", "cleandata.RDS")
+
+saveRDS(rawdata3, location)
 ```
 
 # See if it worked
