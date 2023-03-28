@@ -222,3 +222,106 @@ flu_aug4 %>%
 flu_aug4 %>% 
   roc_auc(truth = Nausea, .pred_No)
 ```
+
+## Deanna Lanier Additions ##
+
+*Instructions*
+Add code that repeats the above steps, but now fits linear models to the continuous outcome. One model with all predictors, one model with just the main predictor. For that, you need to change your metric. RMSE is a good one to choose. You should find that a lot of the code your classmate wrote can copied/pasted/re-used with only minimal modifications. Make sure to add comments/documentation.
+
+## add packages (only ones but listed above)
+```{r}
+## add library to complete RSME
+library(Metrics)
+```
+
+### Loading the cleaned data
+
+```{r}
+location = here("Fluanalysis_exercise", "data", "cleandata", "cleandata.RDS")
+data = readRDS(location)
+```
+
+### Generating training and test data sets
+
+```{r}
+# set seed. This helps with reproducibility 
+set.seed(5678)
+data_split=initial_split(data,prop = 3/4)
+#create training and test
+data_train=training(data_split)
+data_test=testing(data_split)
+```
+
+### Generating a workflow with the continuous outcome with all data
+
+```{r}
+#recipe
+recipe_1 = recipe(BodyTemp ~ ., data = data)
+# initialize the model 
+## I am using a linear model because of the continuous outcome
+model_1 =  linear_reg() %>%
+             set_engine("lm")
+# create workflow
+workflow_1 = 
+             workflow() %>%
+             add_model(model_1) %>%
+             add_recipe(recipe_1)
+workflow_1
+```
+### train the model with the training set
+```{r}
+model_train_1 = workflow_1 %>%
+                fit(data = data_train)
+model_train_1 %>%
+  extract_fit_parsnip()%>%
+  tidy()
+```
+
+## Predict 
+```{r}
+predict(model_train_1, data_test)
+```
+
+### Augment and RMSE
+```{r}
+#augment
+model1_aug = augment(model_train_1, data_test)
+model1_aug %>%
+  select(BodyTemp, .pred)
+#rmse
+Metrics::rmse(actual = model1_aug$BodyTemp, predicted = model1_aug$.pred)
+```
+
+### Do the same with primary predictor 
+
+```{r}
+#recipe 
+recipe_2 = recipe(BodyTemp ~ RunnyNose, data = data)
+#workflow
+workflow_2 =
+             workflow() %>%
+             add_model(model_1) %>%
+             add_recipe(recipe_2)
+#model fit train
+model_2 = workflow_2 %>%
+                fit(data = data_train)
+```
+
+```{r}
+## output
+model_2 %>%
+  extract_fit_parsnip() %>%
+  tidy()
+```
+### Predict
+```{r}
+predict(model_2, data_test)
+```
+```{r}
+# augment
+model_2_aug <- augment(model_2, data_test)
+model_2_aug %>%
+  select(BodyTemp, .pred)
+#RSME
+Metrics::rmse(actual = model_2_aug$BodyTemp, predicted = model_2_aug$.pred)
+```

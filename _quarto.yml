@@ -27,7 +27,9 @@ website:
           - text: "Fitting"
             href: ./Fluanalysis_exercise/code/Fitting.html
           - text: "Evaluation"
-            href: ./Fluanalysis_exercise/code/modeleval.html            
+            href: ./Fluanalysis_exercise/code/modeleval.html
+          - text: "Machine Learning"
+            href: ./Fluanalysis_exercise/code/machinelearning.html 
     right:
       - icon: github 
         href: https://github.com/Jacobmatta/jacobmatta-MADA-portfolio/        
