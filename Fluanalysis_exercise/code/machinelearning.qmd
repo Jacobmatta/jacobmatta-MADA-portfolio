@@ -6,7 +6,6 @@ output:
     toc: FALSE
 ---
 
-
 # Machine Learning Exercise: Comparing Null Model to a Tree, a LASSO and a Random forest model
 
 ### Library
@@ -214,14 +213,16 @@ RMSE Metric for the Tree model = 1.187
 
 ## Fitting for LASSO model
 
-### Building a model 
+### Building a model
+
 ```{r}
 lm_mod =
   linear_reg(penalty = tune(), mixture =1) %>% # Setting mixture to a value of one means that the glmnet model will potentially remove irrelevant predictors and choose a simpler model.
   set_engine("glmnet")
 ```
 
-### Creating a workflow 
+### Creating a workflow
+
 ```{r}
 lm_workflow =
   workflow() %>%
@@ -229,7 +230,8 @@ lm_workflow =
   add_recipe(recipe)
 ```
 
-### Creating a grid for tuning 
+### Creating a grid for tuning
+
 ```{r}
 lm_reg_grid <- tibble(penalty = 10^seq(-4, -1, length.out = 30))
 
@@ -241,13 +243,15 @@ lm_reg_grid %>% top_n(5)
 
 ```
 
-### Train and tune the model 
+### Train and tune the model
+
 ```{r}
 lasso_res <- lm_workflow %>%
   tune_grid(resamples = CV_fold, grid = lm_reg_grid)
 ```
 
-### Collect metrics and picking the best model 
+### Collect metrics and picking the best model
+
 ```{r}
 lasso_res %>% show_best("rmse")
 
@@ -267,6 +271,7 @@ final_lasso_wf
 ```
 
 ### Evaluate the final fit for the Lasso model
+
 ```{r}
 final_fit2 <- 
   final_lasso_wf %>%
@@ -303,11 +308,13 @@ ggplot(residuals_df2, aes(x = Predictions , y = Residuals)) +
   ylab("Residuals") +
   ggtitle("Residual Plot")
 ```
+
 Metric for best fitting LASSO model = 1.16
 
 ## Fitting for random forest model
 
-### Building a model 
+### Building a model
+
 ```{r}
 rf_mod =
   rand_forest(mtry = tune(), min_n = tune(), trees = 1000) %>% 
@@ -315,12 +322,14 @@ rf_mod =
   set_mode("regression")
 ```
 
-## Creating a recipe 
+## Creating a recipe
+
 ```{r}
 recipe2 <- recipe(BodyTemp ~ ., data = train_data)
 ```
 
-### Creating a workflow 
+### Creating a workflow
+
 ```{r}
 rf_workflow =
   workflow() %>%
@@ -328,14 +337,16 @@ rf_workflow =
   add_recipe(recipe2)
 ```
 
-### Train and tune the model 
+### Train and tune the model
+
 ```{r}
 rf_res <- 
   rf_workflow %>% 
   tune_grid(CV_fold)
 ```
 
-### Collect metrics and picking the best model 
+### Collect metrics and picking the best model
+
 ```{r}
 rf_res %>% show_best("rmse")
 
@@ -355,6 +366,7 @@ final_rf_wf
 ```
 
 ### Evaluate the final fit for the random forest model
+
 ```{r}
 final_fit3 <- 
   final_rf_wf %>%
@@ -391,11 +403,13 @@ ggplot(residuals_df3, aes(x = Predictions , y = Residuals)) +
   ylab("Residuals") +
   ggtitle("Residual Plot")
 ```
+
 RMSE Metric for best fitting random forest model = 1.17
 
-## Model Selection 
+## Model Selection
+
 I will be evaluating the performance of each model based on the resulting RMSE metric. The RMSE Metric for the Tree model = 1.19, the RMSE Metric for best fitting LASSO model = 1.16, and the RMSE Metric for best fitting random forest model = 1.17. As a result, I will be selecting the LASSO model.
 
 ## Discussion
-I calculated the final evaluation for each model and based on the RMSE metric the best fitting LASSO model had the lowest RMSE being 1.16. Something I would like to go back and redo when I have the time would be the residual plots, because mine came out a bit funky. 
 
+I calculated the final evaluation for each model and based on the RMSE metric the best fitting LASSO model had the lowest RMSE being 1.16. Something I would like to go back and redo when I have the time would be the residual plots, because mine came out a bit funky.
