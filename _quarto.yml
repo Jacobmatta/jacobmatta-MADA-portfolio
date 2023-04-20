@@ -11,15 +11,15 @@ website:
       - text: "Projects"
         menu:
           - text: "R Coding Exercise"
-            href: ./coding_exercise.html
+            href: ./Coding_exercise/coding_exercise.html
           - text: "Visualization Exercise"
-            href: ./visualization_exercise.html
+            href: ./visualization_exercise/visualization_exercise.html
           - text: "Tidy Tuesday Exercise"
-            href: ./tidytuesday_exercise.html
+            href: ./tidytuesday_exercise/tidytuesday_exercise.html
           - text: "Tidy Tuesday Exercise 2"
-            href: ./tidytuesday_exercise2.html
+            href: ./tidytuesday_exercise/tidytuesday_exercise2.html
           - text: "R Data Analysis Exercise"
-            href: ./dataanalysis_exercise.html
+            href: ./dataanalysis-exercise/dataanalysis_exercise.html
       - text: "Flu Analysis"
         menu: 
           - text: "Wrangling Code"
@@ -28,8 +28,6 @@ website:
             href: ./Fluanalysis_exercise/code/exploration.html 
           - text: "Fitting"
             href: ./Fluanalysis_exercise/code/Fitting.html
-      - text: "Flu Fitting"
-        menu: 
           - text: "Evaluation"
             href: ./Fluanalysis_exercise/code/modeleval.html
           - text: "Machine Learning"
